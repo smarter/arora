@@ -13,6 +13,10 @@ include_directories(${QT_INCLUDES})
 add_definitions(${QT_DEFINITIONS})
 add_definitions( -DQT_NO_CAST_FROM_ASCII -DQT_STRICT_ITERATORS)
 
+## TODO: optional
+include_directories(${KDE4_INCLUDES})
+add_definitions(${KDE4_DEFINITIONS})
+
 include_directories(${CMAKE_SOURCE_DIR}/src
                     ${CMAKE_SOURCE_DIR}/src/cookiejar
                     ${CMAKE_SOURCE_DIR}/src/cookiejar/networkcookiejar
@@ -77,7 +81,7 @@ set(arora_FORMS
 # set(OBJECTS_DIR .obj)
 
 if(WIN32)
-    add_definitions( -DGITVERSION="0" -DGITCHANGENUMBER="0")
+    add_definitions( -DGITVERSION=\"0\" -DGITCHANGENUMBER=\"0\")
 else(WIN32)
 #     exists($$PWD/../.git/HEAD) {
 #         GITVERSION=$$system(git log -n1 --pretty=format:%h)
@@ -105,9 +109,11 @@ else(WIN32)
 
         ## FIXME: wc -l returns a \n so we can't just add '"' to pass it as a QString
         ## maybe this should be done in browserapplication instead of here?
-        add_definitions( -DGITVERSION="${git_version}" -DGITCHANGENUMBER="0")
+        ## FIXME: definitions set after find_package(KDE4) seems to behave weirdly and
+        ## don't keep the '"'
+        add_definitions( -DGITVERSION=\"0\" -DGITCHANGENUMBER=\"0\")
     else(EXISTS ${CMAKE_CURRENT_SOURCE_DIR}/../.git/HEAD)
-        add_definitions( -DGITVERSION="0" -DGITCHANGENUMBER="0")
+        add_definitions( -DGITVERSION=\"0\" -DGITCHANGENUMBER=\"0\")
     endif(EXISTS ${CMAKE_CURRENT_SOURCE_DIR}/../.git/HEAD)
 endif(WIN32)
 
@@ -146,7 +152,9 @@ if(UNIX)
 
 #    add_definitions( -DDATADIR ${DATADIR} -DPKGDATADIR ${PKGDATADIR})
 
-     set( PKGDATADIR ${CMAKE_INSTALL_PREFIX}/share/arora)
+     ## See git_version fixme
+     #set(PKGDATADIR ${CMAKE_INSTALL_PREFIX}/share/arora)
+     set(PKGDATADIR 0)
      add_definitions(-DPKGDATADIR="${PKGDATADIR}")
 endif(UNIX)
 
@@ -249,8 +257,8 @@ add_executable(arora ${arora_SRCS} ${UI} ${MOC} ${RCS})
 
 target_link_libraries(arora ${QT_QTCORE_LIBRARY} ${QT_QTGUI_LIBRARY} ${QT_QTNETWORK_LIBRARY} ${QT_QTWEBKIT_LIBRARY} ${QT_QTUITOOLS_LIBRARY})
 
-##TODO: optional
-target_link_libraries(${KDE4_KDEUI_LIBS})
+## TODO: optional
+target_link_libraries(arora ${KDE4_KDECORE_LIBS} ${KDE4_KDEUI_LIBS})
 
 ## FIXME: shouldn't be hardcoded
 install(TARGETS arora RUNTIME DESTINATION /usr/bin) 

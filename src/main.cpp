@@ -19,6 +19,11 @@
 
 #include "browserapplication.h"
 
+#ifdef HAVE_KDE
+#include "kaboutdata.h"
+#include "kcmdlineargs.h"
+#endif
+
 #ifdef Q_OS_WIN
 #include "explorerstyle.h"
 #endif
@@ -27,7 +32,16 @@ int main(int argc, char **argv)
 {
     Q_INIT_RESOURCE(htmls);
     Q_INIT_RESOURCE(data);
+
+    #ifdef HAVE_KDE
+    KAboutData aboutData("arora", "arora", ki18n("Arora"), "0.5",
+                            ki18n("A web browser"));
+    aboutData.addLicense(KAboutData::License_GPL_V2);
+    KCmdLineArgs::init(argc, argv, &aboutData);
+    #endif
+
     BrowserApplication application(argc, argv);
+
     if (!application.isRunning())
         return 0;
 #ifdef Q_OS_WIN
