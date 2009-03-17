@@ -84,6 +84,8 @@
 
 #include <qdebug.h>
 
+#include <quiloader.h>
+
 WebPage::WebPage(QObject *parent)
     : QWebPage(parent)
     , m_forceInNewTab(false)
