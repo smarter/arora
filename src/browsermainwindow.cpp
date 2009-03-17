@@ -627,9 +627,15 @@ void BrowserMainWindow::setupMenu()
             this, SLOT(slotAddBookmark()));
     m_bookmarksAddAction->setShortcut(QKeySequence(Qt::CTRL | Qt::Key_D));
 
+    m_bookmarksAddFolderAction = new QAction(this);
+    connect(m_bookmarksAddFolderAction, SIGNAL(triggered()),
+            this, SLOT(slotAddBookmarkFolder()));
+
     QList<QAction*> bookmarksActions;
     bookmarksActions.append(m_bookmarksShowAllAction);
     bookmarksActions.append(m_bookmarksAddAction);
+    bookmarksActions.append(tabWidget()->bookmarkTabsAction());
+    bookmarksActions.append(m_bookmarksAddFolderAction);
     m_bookmarksMenu->setInitialActions(bookmarksActions);
 
     // Window
@@ -739,8 +745,9 @@ void BrowserMainWindow::retranslate()
     m_historyRestoreLastSessionAction->setText(tr("Restore Last Session"));
 
     m_bookmarksMenu->setTitle(tr("&Bookmarks"));
-    m_bookmarksShowAllAction->setText(tr("Manage Bookmarks..."));
+    m_bookmarksShowAllAction->setText(tr("Show All Bookmarks..."));
     m_bookmarksAddAction->setText(tr("Add Bookmark..."));
+    m_bookmarksAddFolderAction->setText(tr("Add Folder..."));
 
     m_windowMenu->setTitle(tr("&Window"));
 
@@ -826,10 +833,23 @@ void BrowserMainWindow::slotAddBookmark()
     QString url = QLatin1String(webView->url().toEncoded());
     QString title = webView->title();
 
-    AddBookmarkDialog dialog(url, title);
+    AddBookmarkDialog dialog;
+    dialog.setUrl(url);
+    dialog.setTitle(title);
     BookmarkNode *menu = BrowserApplication::bookmarksManager()->menu();
     QModelIndex index = BrowserApplication::bookmarksManager()->bookmarksModel()->index(menu);
     dialog.setCurrentIndex(index);
+    dialog.exec();
+}
+
+void BrowserMainWindow::slotAddBookmarkFolder()
+{
+    AddBookmarkDialog dialog(this);
+    BookmarksManager *bookmarksManager = BrowserApplication::bookmarksManager();
+    BookmarkNode *menu = bookmarksManager->menu();
+    QModelIndex index = bookmarksManager->bookmarksModel()->index(menu);
+    dialog.setCurrentIndex(index);
+    dialog.setFolder(true);
     dialog.exec();
 }
 

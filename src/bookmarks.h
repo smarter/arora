@@ -296,8 +296,14 @@ class AddBookmarkDialog : public QDialog, public Ui_AddBookmarkDialog
     Q_OBJECT
 
 public:
-    AddBookmarkDialog(const QString &url, const QString &title, QWidget *parent = 0, BookmarksManager *bookmarkManager = 0);
+    AddBookmarkDialog(QWidget *parent = 0, BookmarksManager *bookmarkManager = 0);
+    void setUrl(const QString &url);
+    void setTitle(const QString &title);
+
     void setCurrentIndex(const QModelIndex &index);
+    QModelIndex currentIndex() const;
+    void setFolder(bool addFolder);
+
 
 private slots:
     void accept();
@@ -306,6 +312,7 @@ private:
     QTreeView *m_treeView;
     BookmarksManager *m_bookmarksManager;
     AddBookmarkProxyModel *m_proxyModel;
+    bool m_addFolder;
 };
 
 #include "ui_bookmarks.h"
@@ -323,8 +330,8 @@ public:
 
 private slots:
     void customContextMenuRequested(const QPoint &pos);
-    void open(TabWidget::OpenUrlIn tab);
-    void open();
+    void openBookmark(TabWidget::OpenUrlIn tab);
+    void openBookmark();
     void openInNewTab();
     void openInCurrentTab();
     void editName();
@@ -387,6 +394,7 @@ protected slots:
     void openBookmarkInNewTab();
     void removeBookmark();
     void newBookmark();
+    void newFolder();
 
 private:
     BookmarksModel *m_bookmarksModel;
