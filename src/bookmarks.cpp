@@ -711,10 +711,11 @@ bool AddBookmarkProxyModel::filterAcceptsRow(int source_row, const QModelIndex &
     return sourceModel()->hasChildren(idx);
 }
 
-AddBookmarkDialog::AddBookmarkDialog(const QString &url, const QString &title, QWidget *parent, BookmarksManager *bookmarkManager)
+AddBookmarkDialog::AddBookmarkDialog(QWidget *parent, BookmarksManager *bookmarkManager)
     : QDialog(parent)
     , m_bookmarksManager(bookmarkManager)
     , m_proxyModel(0)
+    , m_addFolder(false)
 {
     setWindowFlags(Qt::Sheet);
     if (!m_bookmarksManager)
@@ -734,13 +735,20 @@ AddBookmarkDialog::AddBookmarkDialog(const QString &url, const QString &title, Q
     location->setModel(m_proxyModel);
     m_treeView->show();
     location->setView(m_treeView);
-
-    name->setText(title);
-    address->setText(url);
-    if (!url.isEmpty())
-        address->hide();
     address->setInactiveText(tr("Url"));
     name->setInactiveText(tr("Title"));
+    resize(sizeHint());
+}
+
+void AddBookmarkDialog::setTitle(const QString &title)
+{
+    name->setText(title);
+}
+
+void AddBookmarkDialog::setUrl(const QString &url)
+{
+    address->setText(url);
+    address->setVisible(url.isEmpty());
     resize(sizeHint());
 }
 
@@ -748,25 +756,52 @@ void AddBookmarkDialog::setCurrentIndex(const QModelIndex &index)
 {
     if (!index.isValid())
         return;
-    m_treeView->setCurrentIndex(index);
-    location->setCurrentIndex(index.row());
+    QModelIndex proxyIndex = m_proxyModel->mapFromSource(index);
+    m_treeView->setCurrentIndex(proxyIndex);
+    location->setCurrentIndex(proxyIndex.row());
+}
+
+QModelIndex AddBookmarkDialog::currentIndex() const
+{
+    QModelIndex index = location->view()->currentIndex();
+    index = m_proxyModel->mapToSource(index);
+    return index;
+}
+
+void AddBookmarkDialog::setFolder(bool addFolder)
+{
+    m_addFolder = addFolder;
+
+    if (addFolder) {
+        setWindowTitle(tr("Add Folder"));
+        address->setVisible(false);
+    } else {
+        setWindowTitle(tr("Add Bookmark"));
+        address->setVisible(true);
+    }
+
+    resize(sizeHint());
 }
 
 void AddBookmarkDialog::accept()
 {
-    if (address->text().isEmpty() || name->text().isEmpty()) {
+    if ((!m_addFolder && address->text().isEmpty()) || name->text().isEmpty()) {
         QDialog::accept();
         return;
     }
 
-    QModelIndex index = location->view()->currentIndex();
-    index = m_proxyModel->mapToSource(index);
+    QModelIndex index = currentIndex();
     if (!index.isValid())
         index = m_bookmarksManager->bookmarksModel()->index(0, 0);
     BookmarkNode *parent = m_bookmarksManager->bookmarksModel()->node(index);
-    BookmarkNode *bookmark = new BookmarkNode(BookmarkNode::Bookmark);
-    bookmark->url = address->text();
+
+    BookmarkNode::Type type = (m_addFolder) ? BookmarkNode::Folder : BookmarkNode::Bookmark;
+    BookmarkNode *bookmark = new BookmarkNode(type);
     bookmark->title = name->text();
+
+    if (!m_addFolder)
+        bookmark->url = address->text();
+
     m_bookmarksManager->addBookmark(parent, bookmark);
     QDialog::accept();
 }
@@ -902,7 +937,7 @@ BookmarksDialog::BookmarksDialog(QWidget *parent, BookmarksManager *manager)
     tree->header()->resizeSection(0, header);
     tree->header()->setStretchLastSection(true);
     connect(tree, SIGNAL(activated(const QModelIndex&)),
-            this, SLOT(open()));
+            this, SLOT(openBookmark()));
     tree->setContextMenuPolicy(Qt::CustomContextMenu);
     connect(tree, SIGNAL(customContextMenuRequested(const QPoint &)),
             this, SLOT(customContextMenuRequested(const QPoint &)));
@@ -974,7 +1009,7 @@ void BookmarksDialog::customContextMenuRequested(const QPoint &pos)
     menu.exec(QCursor::pos());
 }
 
-void BookmarksDialog::open(TabWidget::OpenUrlIn tab)
+void BookmarksDialog::openBookmark(TabWidget::OpenUrlIn tab)
 {
     QModelIndex index = tree->currentIndex();
     QModelIndex sourceIndex = m_proxyModel->mapToSource(index);
@@ -987,21 +1022,21 @@ void BookmarksDialog::open(TabWidget::OpenUrlIn tab)
           index.sibling(index.row(), 0).data(Qt::DisplayRole).toString());
 }
 
-void BookmarksDialog::open()
+void BookmarksDialog::openBookmark()
 {
     BrowserApplication::instance()->setEventMouseButtons(qApp->mouseButtons());
     BrowserApplication::instance()->setEventKeyboardModifiers(qApp->keyboardModifiers());
-    open(TabWidget::UserOrCurrent);
+    openBookmark(TabWidget::UserOrCurrent);
 }
 
 void BookmarksDialog::openInCurrentTab()
 {
-    open(TabWidget::CurrentTab);
+    openBookmark(TabWidget::CurrentTab);
 }
 
 void BookmarksDialog::openInNewTab()
 {
-    open(TabWidget::NewTab);
+    openBookmark(TabWidget::NewTab);
 }
 
 void BookmarksDialog::editName()
@@ -1121,6 +1156,8 @@ void BookmarksToolBar::contextMenuRequested(const QPoint &position)
 
     action = menu.addAction(tr("Add Bookmark..."), this, SLOT(newBookmark()));
 
+    action = menu.addAction(tr("Add Folder..."), this, SLOT(newFolder()));
+
     menu.exec(QCursor::pos());
 }
 
@@ -1171,12 +1208,22 @@ void BookmarksToolBar::removeBookmark()
 
 void BookmarksToolBar::newBookmark()
 {
-    AddBookmarkDialog* dialog = new AddBookmarkDialog(QString(), QString());
+    AddBookmarkDialog dialog;
     BookmarkNode *toolbar = BrowserApplication::bookmarksManager()->toolbar();
     QModelIndex index = m_bookmarksModel->index(toolbar);
-    dialog->setCurrentIndex(index);
-    dialog->exec();
-    delete dialog;
+    dialog.setCurrentIndex(index);
+    dialog.exec();
+}
+
+void BookmarksToolBar::newFolder()
+{
+    BookmarkNode *toolbar = BrowserApplication::bookmarksManager()->toolbar();
+    QModelIndex index = m_bookmarksModel->index(toolbar);
+
+    AddBookmarkDialog dialog(this);
+    dialog.setCurrentIndex(index);
+    dialog.setFolder(true);
+    dialog.exec();
 }
 
 void BookmarksToolBar::dragEnterEvent(QDragEnterEvent *event)

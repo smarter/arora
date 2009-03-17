@@ -26,8 +26,8 @@
  * SUCH DAMAGE.
  */
 
-#ifndef SINGALAPPLICATION_H
-#define SINGALAPPLICATION_H
+#ifndef SINGLEAPPLICATION_H
+#define SINGLEAPPLICATION_H
 
 #ifdef HAVE_KDE
 #  include <kapplication.h>
@@ -50,7 +50,7 @@ class SingleApplication : public QApplication
     Q_OBJECT
 
 signals:
-    void messageRecieved(const QString &message);
+    void messageReceived(const QString &message);
 
 public:
     SingleApplication(int &argc, char **argv);
@@ -68,5 +68,5 @@ private:
 
 };
 
-#endif
+#endif // SINGLEAPPLICATION_H
 
