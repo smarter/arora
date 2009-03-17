@@ -4,6 +4,9 @@ cmake_minimum_required(VERSION 2.6.0 FATAL_ERROR)
 
 set(QT_MIN_VERSION "4.4.0")
 
+## TODO: optional
+add_definitions(-DHAVE_KDE)
+
 add_subdirectory(src)
 #add_subdirectory(tools)
 

@@ -5,6 +5,9 @@
 
 find_package(Qt4 REQUIRED)
 
+## TODO: optional
+find_package(KDE4 REQUIRED)
+
 include_directories(${QT_INCLUDES})
 
 add_definitions(${QT_DEFINITIONS})
@@ -245,6 +248,9 @@ qt4_add_resources(RCS ${arora_RCS})
 add_executable(arora ${arora_SRCS} ${UI} ${MOC} ${RCS})
 
 target_link_libraries(arora ${QT_QTCORE_LIBRARY} ${QT_QTGUI_LIBRARY} ${QT_QTNETWORK_LIBRARY} ${QT_QTWEBKIT_LIBRARY} ${QT_QTUITOOLS_LIBRARY})
+
+##TODO: optional
+target_link_libraries(${KDE4_KDEUI_LIBS})
 
 ## FIXME: shouldn't be hardcoded
 install(TARGETS arora RUNTIME DESTINATION /usr/bin) 

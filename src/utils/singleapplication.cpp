@@ -41,7 +41,11 @@
 #endif
 
 SingleApplication::SingleApplication(int &argc, char **argv)
+#ifdef HAVE_KDE
+    : KApplication()
+#else
     : QApplication(argc, argv)
+#endif
     , m_localServer(0)
 {
 }

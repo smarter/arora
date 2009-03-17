@@ -29,14 +29,23 @@
 #ifndef SINGALAPPLICATION_H
 #define SINGALAPPLICATION_H
 
-#include <qapplication.h>
+#ifdef HAVE_KDE
+#  include <kapplication.h>
+#else
+#  include <qapplication.h>
+#endif
 
 /*
     QApplication subclass that should be used when you only want one
     instant of the application to exist at a time.
 */
 class QLocalServer;
+
+#ifdef HAVE_KDE
+class SingleApplication : public KApplication
+#else
 class SingleApplication : public QApplication
+#endif
 {
     Q_OBJECT
 
