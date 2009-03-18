@@ -88,7 +88,11 @@
 #include <quiloader.h>
 
 WebPage::WebPage(QObject *parent)
+#ifdef HAVE_KDE
+    : KWebPage(parent)
+#else
     : QWebPage(parent)
+#endif
     , m_forceInNewTab(false)
 {
     setNetworkAccessManager(BrowserApplication::networkAccessManager());
@@ -157,10 +161,18 @@ bool WebPage::acceptNavigationRequest(QWebFrame *frame, const QNetworkRequest &r
         emit loadingUrl(m_loadingUrl);
     }
 
+    #ifdef HAVE_KDE
+    return KWebPage::acceptNavigationRequest(frame, request, type);
+    #else
     return QWebPage::acceptNavigationRequest(frame, request, type);
+    #endif
 }
 
+#ifdef HAVE_KDE
+KWebPage *WebPage::createWindow(QWebPage::WebWindowType type)
+#else
 QWebPage *WebPage::createWindow(QWebPage::WebWindowType type)
+#endif
 {
     Q_UNUSED(type);
     QSettings settings;
@@ -247,7 +259,11 @@ void WebPage::handleUnsupportedContent(QNetworkReply *reply)
 
 
 WebView::WebView(QWidget *parent)
+#ifdef HAVE_KDE
+    : KWebView(parent)
+#else
     : QWebView(parent)
+#endif
     , m_progress(0)
     , m_currentZoom(100)
     , m_page(new WebPage(this))
@@ -326,7 +342,11 @@ void WebView::contextMenuEvent(QContextMenuEvent *event)
     }
     delete menu;
 
+    #ifdef HAVE_KDE
+    KWebView::contextMenuEvent(event);
+    #else
     QWebView::contextMenuEvent(event);
+    #endif
 }
 
 void WebView::wheelEvent(QWheelEvent *event)
@@ -339,7 +359,12 @@ void WebView::wheelEvent(QWheelEvent *event)
         event->accept();
         return;
     }
+
+    #ifdef HAVE_KDE
+    KWebView::wheelEvent(event);
+    #else
     QWebView::wheelEvent(event);
+    #endif
 }
 
 void WebView::resizeEvent(QResizeEvent *event)
@@ -349,7 +374,12 @@ void WebView::resizeEvent(QResizeEvent *event)
     setUpdatesEnabled(false);
     page()->mainFrame()->setScrollBarValue(Qt::Vertical, currentValue - offset);
     setUpdatesEnabled(true);
+
+    #ifdef HAVE_KDE
+    KWebView::resizeEvent(event);
+    #else
     QWebView::resizeEvent(event);
+    #endif
 }
 
 void WebView::openLinkInNewTab()
@@ -526,7 +556,11 @@ void WebView::mousePressEvent(QMouseEvent *event)
         pageAction(WebPage::Forward)->trigger();
         break;
     default:
+        #ifdef HAVE_KDE
+        KWebView::mousePressEvent(event);
+        #else
         QWebView::mousePressEvent(event);
+        #endif
         break;
     }
 }
@@ -545,13 +579,22 @@ void WebView::dragMoveEvent(QDragMoveEvent *event)
         if (url.isValid())
             event->acceptProposedAction();
     }
-    if (!event->isAccepted())
+    if (!event->isAccepted()) {
+        #ifdef HAVE_KDE
+        KWebView::dragMoveEvent(event);
+        #else
         QWebView::dragMoveEvent(event);
+        #endif
+    }
 }
 
 void WebView::dropEvent(QDropEvent *event)
 {
+    #ifdef HAVE_KDE
+    KWebView::dropEvent(event);
+    #else
     QWebView::dropEvent(event);
+    #endif
     if (!event->isAccepted()
         && event->possibleActions() & Qt::CopyAction) {
 
@@ -569,7 +612,11 @@ void WebView::dropEvent(QDropEvent *event)
 
 void WebView::mouseReleaseEvent(QMouseEvent *event)
 {
+    #ifdef HAVE_KDE
+    KWebView::mouseReleaseEvent(event);
+    #else
     QWebView::mouseReleaseEvent(event);
+    #endif
     if (!event->isAccepted()
         && (BrowserApplication::instance()->eventMouseButtons() & Qt::MidButton)) {
         QUrl url(QApplication::clipboard()->text(QClipboard::Selection));

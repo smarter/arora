@@ -64,7 +64,11 @@
 #ifndef WEBVIEW_H
 #define WEBVIEW_H
 
+#ifdef HAVE_KDE
+#include <kwebview.h>
+#else
 #include <qwebview.h>
+#endif
 
 QT_BEGIN_NAMESPACE
 class QAuthenticator;
@@ -76,7 +80,12 @@ QT_END_NAMESPACE
 
 class TabWidget;
 class BrowserMainWindow;
+
+#ifdef HAVE_KDE
+class WebPage : public KWebPage
+#else
 class WebPage : public QWebPage
+#endif
 {
     Q_OBJECT
 
@@ -90,7 +99,12 @@ public:
 protected:
     bool acceptNavigationRequest(QWebFrame *frame, const QNetworkRequest &request, NavigationType type);
 
+#ifdef HAVE_KDE
+    KWebPage *createWindow(QWebPage::WebWindowType type);
+#else
     QWebPage *createWindow(QWebPage::WebWindowType type);
+#endif
+
 #if !defined(QT_NO_UITOOLS)
     QObject *createPlugin(const QString &classId, const QUrl &url, const QStringList &paramNames, const QStringList &paramValues);
 #endif
@@ -107,7 +121,11 @@ private:
     QUrl m_loadingUrl;
 };
 
+#ifdef HAVE_KDE
+class WebView : public KWebView
+#else
 class WebView : public QWebView
+#endif
 {
     Q_OBJECT
 
