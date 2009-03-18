@@ -102,10 +102,6 @@
 
 #include <qdebug.h>
 
-#ifdef HAVE_KDE
-#include <kfiledialog.h>
-#endif
-
 BrowserMainWindow::BrowserMainWindow(QWidget *parent, Qt::WindowFlags flags)
     : QMainWindow(parent, flags)
     , m_navigationBar(0)
@@ -979,14 +975,8 @@ void BrowserMainWindow::slotFileNew()
 
 void BrowserMainWindow::slotFileOpen()
 {
-    #ifdef HAVE_KDE
-    QString file = KFileDialog::getOpenFileName(KUrl::fromPath(QDir::homePath()),
-                   tr("*.html *.htm *.svg *.png *.gif *.svgz|Web Resources\n*.*|All files"),
-                   this, tr("Open Web Resource"));
-    #else
     QString file = QFileDialog::getOpenFileName(this, tr("Open Web Resource"), QString(),
                    tr("Web Resources (*.html *.htm *.svg *.png *.gif *.svgz);;All files (*.*)"));
-    #endif
 
     if (file.isEmpty())
         return;

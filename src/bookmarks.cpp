@@ -82,10 +82,6 @@
 
 #include <qdebug.h>
 
-#ifdef HAVE_KDE
-#include <kfiledialog.h>
-#endif
-
 #define BOOKMARKBAR QT_TRANSLATE_NOOP("BookmarksManager", "Bookmarks Bar")
 #define BOOKMARKMENU QT_TRANSLATE_NOOP("BookmarksManager", "Bookmarks Menu")
 
@@ -278,15 +274,9 @@ BookmarksModel *BookmarksManager::bookmarksModel()
 
 void BookmarksManager::importBookmarks()
 {
-    #ifdef HAVE_KDE
-    QString fileName = KFileDialog::getOpenFileName(KUrl::fromPath(QDir::homePath()), tr("*.xbel *.xml|XBEL (*.xbel, *.xml)"),
-                                                     0, tr("Open File"));
-    #else
     QString fileName = QFileDialog::getOpenFileName(0, tr("Open File"),
                                                      QString(),
                                                      tr("XBEL (*.xbel *.xml)"));
-    #endif
-
     if (fileName.isEmpty())
         return;
 
@@ -305,15 +295,9 @@ void BookmarksManager::importBookmarks()
 
 void BookmarksManager::exportBookmarks()
 {
-    #ifdef HAVE_KDE
-    QString fileName = KFileDialog::getSaveFileName(KUrl::fromPath(QDir::homePath()),
-                                tr("*.xbel *.xml|XBEL (*.xbel, *.xml)"), 0, tr("Save File"));
-    #else
     QString fileName = QFileDialog::getSaveFileName(0, tr("Save File"),
                                 tr("%1 Bookmarks.xbel").arg(QCoreApplication::applicationName()),
                                 tr("XBEL (*.xbel *.xml)"));
-    #endif
-
     if (fileName.isEmpty())
         return;
 
