@@ -82,10 +82,14 @@ class TabWidget;
 class BrowserMainWindow;
 
 #ifdef HAVE_KDE
-class WebPage : public KWebPage
+typedef class KWebPage pWebPage;
+typedef class KWebView pWebView;
 #else
-class WebPage : public QWebPage
+typedef class QWebPage pWebPage;
+typedef class QWebView pWebView;
 #endif
+
+class WebPage : public pWebPage
 {
     Q_OBJECT
 
@@ -99,11 +103,7 @@ public:
 protected:
     bool acceptNavigationRequest(QWebFrame *frame, const QNetworkRequest &request, NavigationType type);
 
-#ifdef HAVE_KDE
-    KWebPage *createWindow(QWebPage::WebWindowType type);
-#else
-    QWebPage *createWindow(QWebPage::WebWindowType type);
-#endif
+    pWebPage *createWindow(pWebPage::WebWindowType type);
 
 #if !defined(QT_NO_UITOOLS)
     QObject *createPlugin(const QString &classId, const QUrl &url, const QStringList &paramNames, const QStringList &paramValues);
@@ -121,11 +121,7 @@ private:
     QUrl m_loadingUrl;
 };
 
-#ifdef HAVE_KDE
-class WebView : public KWebView
-#else
-class WebView : public QWebView
-#endif
+class WebView : public pWebView
 {
     Q_OBJECT
 

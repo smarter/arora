@@ -88,11 +88,7 @@
 #include <quiloader.h>
 
 WebPage::WebPage(QObject *parent)
-#ifdef HAVE_KDE
-    : KWebPage(parent)
-#else
-    : QWebPage(parent)
-#endif
+    : pWebPage(parent)
     , m_forceInNewTab(false)
 {
     setNetworkAccessManager(BrowserApplication::networkAccessManager());
@@ -127,7 +123,7 @@ bool WebPage::acceptNavigationRequest(QWebFrame *frame, const QNetworkRequest &r
     }
 
     TabWidget::OpenUrlIn openIn = frame ? TabWidget::CurrentTab : TabWidget::NewWindow;
-    if (type == QWebPage::NavigationTypeBackOrForward) {
+    if (type == pWebPage::NavigationTypeBackOrForward) {
         BrowserApplication::instance()->setEventMouseButtons(qApp->mouseButtons());
         BrowserApplication::instance()->setEventKeyboardModifiers(qApp->keyboardModifiers());
     }
@@ -135,7 +131,7 @@ bool WebPage::acceptNavigationRequest(QWebFrame *frame, const QNetworkRequest &r
     // A short term hack until QtWebKit can get a reload without cache QAction
     // *FYI* currently type is never NavigationTypeReload
     // See: https://bugs.webkit.org/show_bug.cgi?id=24283
-    if (type == QWebPage::NavigationTypeReload
+    if (type == pWebPage::NavigationTypeReload
         && (qApp->keyboardModifiers() & Qt::ShiftModifier)) {
         QNetworkRequest newRequest(request);
         newRequest.setAttribute(QNetworkRequest::CacheLoadControlAttribute,
@@ -161,18 +157,10 @@ bool WebPage::acceptNavigationRequest(QWebFrame *frame, const QNetworkRequest &r
         emit loadingUrl(m_loadingUrl);
     }
 
-    #ifdef HAVE_KDE
-    return KWebPage::acceptNavigationRequest(frame, request, type);
-    #else
-    return QWebPage::acceptNavigationRequest(frame, request, type);
-    #endif
+    return pWebPage::acceptNavigationRequest(frame, request, type);
 }
 
-#ifdef HAVE_KDE
-KWebPage *WebPage::createWindow(QWebPage::WebWindowType type)
-#else
-QWebPage *WebPage::createWindow(QWebPage::WebWindowType type)
-#endif
+pWebPage *WebPage::createWindow(pWebPage::WebWindowType type)
 {
     Q_UNUSED(type);
     QSettings settings;
@@ -259,11 +247,7 @@ void WebPage::handleUnsupportedContent(QNetworkReply *reply)
 
 
 WebView::WebView(QWidget *parent)
-#ifdef HAVE_KDE
-    : KWebView(parent)
-#else
-    : QWebView(parent)
-#endif
+    : pWebView(parent)
     , m_progress(0)
     , m_currentZoom(100)
     , m_page(new WebPage(this))
@@ -306,10 +290,10 @@ void WebView::contextMenuEvent(QContextMenuEvent *event)
         menu->addAction(tr("&Bookmark This Link"), this, SLOT(bookmarkLink()))->setData(r.linkUrl());
         menu->addSeparator();
         if (!page()->selectedText().isEmpty())
-            menu->addAction(pageAction(QWebPage::Copy));
+            menu->addAction(pageAction(pWebPage::Copy));
         menu->addAction(tr("&Copy Link Location"), this, SLOT(copyLinkToClipboard()));
         if (page()->settings()->testAttribute(QWebSettings::DeveloperExtrasEnabled))
-            menu->addAction(pageAction(QWebPage::InspectElement));
+            menu->addAction(pageAction(pWebPage::InspectElement));
     }
 
     if (!r.imageUrl().isEmpty()) {
@@ -342,11 +326,7 @@ void WebView::contextMenuEvent(QContextMenuEvent *event)
     }
     delete menu;
 
-    #ifdef HAVE_KDE
-    KWebView::contextMenuEvent(event);
-    #else
-    QWebView::contextMenuEvent(event);
-    #endif
+    pWebView::contextMenuEvent(event);
 }
 
 void WebView::wheelEvent(QWheelEvent *event)
@@ -360,11 +340,7 @@ void WebView::wheelEvent(QWheelEvent *event)
         return;
     }
 
-    #ifdef HAVE_KDE
-    KWebView::wheelEvent(event);
-    #else
-    QWebView::wheelEvent(event);
-    #endif
+    pWebView::wheelEvent(event);
 }
 
 void WebView::resizeEvent(QResizeEvent *event)
@@ -375,53 +351,49 @@ void WebView::resizeEvent(QResizeEvent *event)
     page()->mainFrame()->setScrollBarValue(Qt::Vertical, currentValue - offset);
     setUpdatesEnabled(true);
 
-    #ifdef HAVE_KDE
-    KWebView::resizeEvent(event);
-    #else
-    QWebView::resizeEvent(event);
-    #endif
+    pWebView::resizeEvent(event);
 }
 
 void WebView::openLinkInNewTab()
 {
     m_page->m_forceInNewTab = true;
-    pageAction(QWebPage::OpenLinkInNewWindow)->trigger();
+    pageAction(pWebPage::OpenLinkInNewWindow)->trigger();
 }
 
 void WebView::openLinkInNewWindow()
 {
-    pageAction(QWebPage::OpenLinkInNewWindow)->trigger();
+    pageAction(pWebPage::OpenLinkInNewWindow)->trigger();
 }
 
 void WebView::downloadLinkToDisk()
 {
-    pageAction(QWebPage::DownloadLinkToDisk)->trigger();
+    pageAction(pWebPage::DownloadLinkToDisk)->trigger();
 }
 
 void WebView::copyLinkToClipboard()
 {
-    pageAction(QWebPage::CopyLinkToClipboard)->trigger();
+    pageAction(pWebPage::CopyLinkToClipboard)->trigger();
 }
 
 void WebView::openImageInNewTab()
 {
     m_page->m_forceInNewTab = true;
-    pageAction(QWebPage::OpenImageInNewWindow)->trigger();
+    pageAction(pWebPage::OpenImageInNewWindow)->trigger();
 }
 
 void WebView::openImageInNewWindow()
 {
-    pageAction(QWebPage::OpenImageInNewWindow)->trigger();
+    pageAction(pWebPage::OpenImageInNewWindow)->trigger();
 }
 
 void WebView::downloadImageToDisk()
 {
-    pageAction(QWebPage::DownloadImageToDisk)->trigger();
+    pageAction(pWebPage::DownloadImageToDisk)->trigger();
 }
 
 void WebView::copyImageToClipboard()
 {
-    pageAction(QWebPage::CopyImageToClipboard)->trigger();
+    pageAction(pWebPage::CopyImageToClipboard)->trigger();
 }
 
 void WebView::copyImageLocationToClipboard()
@@ -536,7 +508,7 @@ QString WebView::lastStatusBarText() const
 
 QUrl WebView::url() const
 {
-    QUrl url = QWebView::url();
+    QUrl url = pWebView::url();
     if (!url.isEmpty())
         return url;
 
@@ -556,11 +528,7 @@ void WebView::mousePressEvent(QMouseEvent *event)
         pageAction(WebPage::Forward)->trigger();
         break;
     default:
-        #ifdef HAVE_KDE
-        KWebView::mousePressEvent(event);
-        #else
-        QWebView::mousePressEvent(event);
-        #endif
+        pWebView::mousePressEvent(event);
         break;
     }
 }
@@ -579,22 +547,13 @@ void WebView::dragMoveEvent(QDragMoveEvent *event)
         if (url.isValid())
             event->acceptProposedAction();
     }
-    if (!event->isAccepted()) {
-        #ifdef HAVE_KDE
-        KWebView::dragMoveEvent(event);
-        #else
-        QWebView::dragMoveEvent(event);
-        #endif
-    }
+    if (!event->isAccepted())
+        pWebView::dragMoveEvent(event);
 }
 
 void WebView::dropEvent(QDropEvent *event)
 {
-    #ifdef HAVE_KDE
-    KWebView::dropEvent(event);
-    #else
-    QWebView::dropEvent(event);
-    #endif
+    pWebView::dropEvent(event);
     if (!event->isAccepted()
         && event->possibleActions() & Qt::CopyAction) {
 
@@ -612,11 +571,7 @@ void WebView::dropEvent(QDropEvent *event)
 
 void WebView::mouseReleaseEvent(QMouseEvent *event)
 {
-    #ifdef HAVE_KDE
-    KWebView::mouseReleaseEvent(event);
-    #else
-    QWebView::mouseReleaseEvent(event);
-    #endif
+    pWebView::mouseReleaseEvent(event);
     if (!event->isAccepted()
         && (BrowserApplication::instance()->eventMouseButtons() & Qt::MidButton)) {
         QUrl url(QApplication::clipboard()->text(QClipboard::Selection));
