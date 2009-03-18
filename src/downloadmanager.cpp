@@ -81,6 +81,10 @@
 
 #include <qwebsettings.h>
 
+#ifdef HAVE_KDE
+#include <kfiledialog.h>
+#endif
+
 //#define DOWNLOADMANAGER_DEBUG
 
 /*!
@@ -169,7 +173,11 @@ void DownloadItem::getFileName()
     QString fileName = defaultFileName;
     if (m_requestFileName) {
         m_gettingFileName = true;
+        #ifdef HAVE_KDE
+        fileName = KFileDialog::getSaveFileName(KUrl::fromPath(QDir::homePath()), QLatin1String("*.html *.htm|HTML pages"), this, tr("Save File"));
+        #else
         fileName = QFileDialog::getSaveFileName(this, tr("Save File"), defaultFileName);
+        #endif
         m_gettingFileName = false;
         if (fileName.isEmpty()) {
             progressBar->setVisible(false);

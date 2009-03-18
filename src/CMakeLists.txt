@@ -258,7 +258,7 @@ add_executable(arora ${arora_SRCS} ${UI} ${MOC} ${RCS})
 target_link_libraries(arora ${QT_QTCORE_LIBRARY} ${QT_QTGUI_LIBRARY} ${QT_QTNETWORK_LIBRARY} ${QT_QTWEBKIT_LIBRARY} ${QT_QTUITOOLS_LIBRARY})
 
 ## TODO: optional
-target_link_libraries(arora ${KDE4_KDECORE_LIBS} ${KDE4_KDEUI_LIBS})
+target_link_libraries(arora ${KDE4_KDECORE_LIBS} ${KDE4_KDEUI_LIBS} ${KDE4_KIO_LIBS})
 
 ## FIXME: shouldn't be hardcoded
 install(TARGETS arora RUNTIME DESTINATION /usr/bin) 
