@@ -3,11 +3,10 @@
 # set(    QMAKE_MACOSX_DEPLOYMENT_TARGET 10.4)
 # }
 
-find_package(Qt4 REQUIRED)
+macro_optional_find_package(KdeWebKit)
+macro_log_feature( KDEWEBKIT_FOUND "KDEWebKit" "a QtWebKit based library KDE" "http://websvn.kde.org/trunk/playground/libs/webkitkde/" FALSE "" "Needed for better integration of Arora with KDE" )
 
-## TODO: optional
-find_package(KDE4 REQUIRED)
-find_package(KdeWebKit OPTIONAL)
+macro_display_feature_log()
 
 include_directories(${QT_INCLUDES})
 
@@ -18,10 +17,10 @@ add_definitions( -DQT_NO_CAST_FROM_ASCII -DQT_STRICT_ITERATORS)
 include_directories(${KDE4_INCLUDES})
 add_definitions(${KDE4_DEFINITIONS})
 
-if(${KDEWEBKIT_FOUND})
+if(KDEWEBKIT_FOUND)
     include_directories(${KDEWEBKIT_INCLUDE_DIR})
     add_definitions(${KDEWEBKIT_DEFINITIONS} -DHAVE_KDEWEBKIT)
-endif(${KDEWEBKIT_FOUND})
+endif(KDEWEBKIT_FOUND)
 
 include_directories(${CMAKE_SOURCE_DIR}/src
                     ${CMAKE_SOURCE_DIR}/src/cookiejar

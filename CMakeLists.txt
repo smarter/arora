@@ -4,8 +4,15 @@ cmake_minimum_required(VERSION 2.6.0 FATAL_ERROR)
 
 set(QT_MIN_VERSION "4.4.0")
 
+find_package(Qt4 REQUIRED)
+
 ## TODO: optional
 add_definitions(-DHAVE_KDE)
+
+find_package(KDE4 REQUIRED)
+
+include(KDE4Defaults)
+include(MacroLibrary)
 
 add_subdirectory(src)
 #add_subdirectory(tools)
