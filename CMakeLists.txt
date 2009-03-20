@@ -4,6 +4,8 @@ cmake_minimum_required(VERSION 2.6.0 FATAL_ERROR)
 
 set(QT_MIN_VERSION "4.4.0")
 
+find_package(Qt4 REQUIRED)
+
 add_subdirectory(src)
 #add_subdirectory(tools)
 

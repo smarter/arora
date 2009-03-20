@@ -3,7 +3,13 @@
 # set(    QMAKE_MACOSX_DEPLOYMENT_TARGET 10.4)
 # }
 
-find_package(Qt4 REQUIRED)
+if(APPLE)
+    ##TODO: needs testing
+    set(env{MACOSX_DEPLOYMENT_TARGET} 10.4)
+    set(arora_BIN Arora)
+else(APPLE)
+    set(arora_BIN arora)
+endif(APPLE)
 
 include_directories(${QT_INCLUDES})
 
@@ -76,16 +82,6 @@ set(arora_FORMS
 if(WIN32)
     add_definitions( -DGITVERSION="0" -DGITCHANGENUMBER="0")
 else(WIN32)
-#     exists($$PWD/../.git/HEAD) {
-#         GITVERSION=$$system(git log -n1 --pretty=format:%h)
-#         DEFINES += GITVERSION=\"\\\"$$GITVERSION\\\"\"
-#         GITCHANGENUMBER=$$system(git log --pretty=format:%h | wc -l)
-#         DEFINES += GITCHANGENUMBER=\"\\\"$$GITCHANGENUMBER\\\"\"
-#     } else {
-#         DEFINES += GITVERSION=\"\\\"0\\\"\"
-#         DEFINES += GITCHANGENUMBER=\"\\\"0\\\"\"
-#     }
-
     if(EXISTS ${CMAKE_CURRENT_SOURCE_DIR}/../.git/HEAD)
         execute_process(
             COMMAND git log -n1 --pretty=format:%h
@@ -117,7 +113,6 @@ set(arora_RCS
     htmls/htmls.qrc)
 
 set(DISTFILES
-    ${DISTFILES}
     ../AUTHORS
     ../ChangeLog
     ../LICENSE.GPL2
@@ -125,7 +120,9 @@ set(DISTFILES
     ../README)
 
 if(WIN32)
-    set(RC_FILE browser.rc)
+    set(arora_RCS
+        ${arora_RCS}
+        browser.rc)
 endif(WIN32)
 
 if(APPLE)
@@ -238,13 +235,13 @@ set( arora_MOCS
 ../src/webview.h
 ../src/webviewsearch.h)
 
-qt4_wrap_ui(UI ${arora_FORMS})
-qt4_wrap_cpp(MOC ${arora_MOCS})
+qt4_wrap_ui(FORMS ${arora_FORMS})
+qt4_wrap_cpp(MOCS ${arora_MOCS})
 qt4_add_resources(RCS ${arora_RCS})
 
-add_executable(arora ${arora_SRCS} ${UI} ${MOC} ${RCS})
+add_executable(${arora_BIN} ${arora_SRCS} ${FORMS} ${MOCS} ${RCS})
 
-target_link_libraries(arora ${QT_QTCORE_LIBRARY} ${QT_QTGUI_LIBRARY} ${QT_QTNETWORK_LIBRARY} ${QT_QTWEBKIT_LIBRARY} ${QT_QTUITOOLS_LIBRARY})
+target_link_libraries(${arora_BIN} ${QT_QTCORE_LIBRARY} ${QT_QTGUI_LIBRARY} ${QT_QTNETWORK_LIBRARY} ${QT_QTWEBKIT_LIBRARY} ${QT_QTUITOOLS_LIBRARY})
 
 ## FIXME: shouldn't be hardcoded
-install(TARGETS arora RUNTIME DESTINATION /usr/bin) 
+install(TARGETS ${arora_BIN} RUNTIME DESTINATION /usr/bin) 
