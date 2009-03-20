@@ -7,7 +7,7 @@ find_package(Qt4 REQUIRED)
 
 ## TODO: optional
 find_package(KDE4 REQUIRED)
-find_package(KdeWebKit REQUIRED)
+find_package(KdeWebKit OPTIONAL)
 
 include_directories(${QT_INCLUDES})
 
@@ -15,8 +15,13 @@ add_definitions(${QT_DEFINITIONS})
 add_definitions( -DQT_NO_CAST_FROM_ASCII -DQT_STRICT_ITERATORS)
 
 ## TODO: optional
-include_directories(${KDE4_INCLUDES} ${KDEWEBKIT_INCLUDE_DIR})
+include_directories(${KDE4_INCLUDES})
 add_definitions(${KDE4_DEFINITIONS})
+
+if(${KDEWEBKIT_FOUND})
+    include_directories(${KDEWEBKIT_INCLUDE_DIR})
+    add_definitions(${KDEWEBKIT_DEFINITIONS} -DHAVE_KDEWEBKIT)
+endif(${KDEWEBKIT_FOUND})
 
 include_directories(${CMAKE_SOURCE_DIR}/src
                     ${CMAKE_SOURCE_DIR}/src/cookiejar
@@ -259,7 +264,11 @@ add_executable(arora ${arora_SRCS} ${UI} ${MOC} ${RCS})
 target_link_libraries(arora ${QT_QTCORE_LIBRARY} ${QT_QTGUI_LIBRARY} ${QT_QTNETWORK_LIBRARY} ${QT_QTWEBKIT_LIBRARY} ${QT_QTUITOOLS_LIBRARY})
 
 ## TODO: optional
-target_link_libraries(arora ${KDE4_KDECORE_LIBS} ${KDE4_KDEUI_LIBS} ${KDE4_KIO_LIBS} ${KDEWEBKIT_LIBRARIES})
+target_link_libraries(arora ${KDE4_KDECORE_LIBS} ${KDE4_KDEUI_LIBS} ${KDE4_KIO_LIBS})
+
+if(KDEWEBKIT_FOUND)
+    target_link_libraries(arora ${KDEWEBKIT_LIBRARIES})
+endif(KDEWEBKIT_FOUND)
 
 ## FIXME: shouldn't be hardcoded
 install(TARGETS arora RUNTIME DESTINATION /usr/bin) 

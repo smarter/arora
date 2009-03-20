@@ -64,7 +64,7 @@
 #ifndef WEBVIEW_H
 #define WEBVIEW_H
 
-#ifdef HAVE_KDE
+#ifdef HAVE_KDEWEBKIT
 #include <kwebview.h>
 #else
 #include <qwebview.h>
@@ -81,7 +81,7 @@ QT_END_NAMESPACE
 class TabWidget;
 class BrowserMainWindow;
 
-#ifdef HAVE_KDE
+#ifdef HAVE_KDEWEBKIT
 typedef class KWebPage pWebPage;
 typedef class KWebView pWebView;
 #else
