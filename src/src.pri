@@ -50,6 +50,7 @@ HEADERS += \
     browserapplication.h \
     browsermainwindow.h \
     clearprivatedata.h \
+    clearbutton.h \
     downloadmanager.h \
     edittableview.h \
     edittreeview.h \
@@ -61,6 +62,7 @@ HEADERS += \
     networkaccessmanager.h \
     plaintexteditsearch.h \
     searchbar.h \
+    searchbutton.h \
     searchlineedit.h \
     settings.h \
     sourcehighlighter.h \
@@ -80,6 +82,7 @@ SOURCES += \
     browserapplication.cpp \
     browsermainwindow.cpp \
     clearprivatedata.cpp \
+    clearbutton.cpp \
     downloadmanager.cpp \
     edittableview.cpp \
     edittreeview.cpp \
@@ -90,6 +93,7 @@ SOURCES += \
     networkaccessmanager.cpp \
     plaintexteditsearch.cpp \
     searchbar.cpp \
+    searchbutton.cpp \
     searchlineedit.cpp \
     settings.cpp \
     sourcehighlighter.cpp \

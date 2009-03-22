@@ -60,82 +60,51 @@
 **
 ****************************************************************************/
 
-#include "searchlineedit.h"
-
 #include "clearbutton.h"
-#include "searchbutton.h"
-
+#include <qpainter.h>
+/*
 #include <qevent.h>
 #include <qmenu.h>
-#include <qpainter.h>
 #include <qstyle.h>
 #include <qstyleoption.h>
 
 #include <qdebug.h>
-
-/*
-    SearchLineEdit is an enhanced QLineEdit
-    - A Search icon on the left with optional menu
-    - When there is no text and doesn't have focus an "inactive text" is displayed
-    - When there is text a clear button is displayed on the right hand side
- */
-SearchLineEdit::SearchLineEdit(QWidget *parent)
-    : LineEdit(parent)
-    , m_searchButton(0)
+*/
+ClearButton::ClearButton(QWidget *parent)
+    : QAbstractButton(parent)
 {
-    setUpdatesEnabled(false);
-    m_searchButton = new SearchButton(this);
-    updateGeometries();
-    addWidget(m_searchButton, LeftSide);
-    setInactiveText(tr("Search"));
-
-    QSizePolicy policy = sizePolicy();
-    setSizePolicy(QSizePolicy::Preferred, policy.verticalPolicy());
-
-    // clear button on the right
-    ClearButton *m_clearButton = new ClearButton(this);
-    connect(m_clearButton, SIGNAL(clicked()),
-            this, SLOT(clear()));
-    connect(this, SIGNAL(textChanged(const QString&)),
-            m_clearButton, SLOT(textChanged(const QString&)));
-    addWidget(m_clearButton, RightSide);
-    m_clearButton->hide();
-    updateTextMargins();
-    setUpdatesEnabled(true);
+    setCursor(Qt::ArrowCursor);
+    setToolTip(tr("Clear"));
+    setVisible(false);
+    setFocusPolicy(Qt::NoFocus);
+    setMinimumSize(22, 22);
 }
 
-void SearchLineEdit::resizeEvent(QResizeEvent *event)
+void ClearButton::paintEvent(QPaintEvent *event)
 {
-    updateGeometries();
-    LineEdit::resizeEvent(event);
+    Q_UNUSED(event);
+    QPainter painter(this);
+    int height = this->height();
+
+    painter.setRenderHint(QPainter::Antialiasing, true);
+    QColor color = palette().color(QPalette::Mid);
+    painter.setBrush(isDown()
+                     ? palette().color(QPalette::Dark)
+                     : palette().color(QPalette::Mid));
+    painter.setPen(painter.brush().color());
+    int size = width();
+    int offset = size / 5;
+    int radius = size - offset * 2;
+    painter.drawEllipse(offset, offset, radius, radius);
+
+    painter.setPen(palette().color(QPalette::Base));
+    int border = offset * 2;
+    painter.drawLine(border, border, width() - border, height - border);
+    painter.drawLine(border, height - border, width() - border, border);
 }
 
-void SearchLineEdit::updateGeometries()
+void ClearButton::textChanged(const QString &text)
 {
-    int menuHeight = height();
-    int menuWidth = menuHeight + 1;
-    if (!m_searchButton->m_menu)
-        menuWidth = (menuHeight / 5) * 4;
-    m_searchButton->setMinimumSize(QSize(menuWidth, menuHeight));
-    m_searchButton->resize(menuWidth, menuHeight);
-    updateTextMargins();
-}
-
-void SearchLineEdit::setMenu(QMenu *menu)
-{
-    if (m_searchButton->m_menu)
-        m_searchButton->m_menu->deleteLater();
-    m_searchButton->m_menu = menu;
-    updateGeometries();
-}
-
-QMenu *SearchLineEdit::menu() const
-{
-    if (!m_searchButton->m_menu) {
-        m_searchButton->m_menu = new QMenu(m_searchButton);
-        if (isVisible())
-            (const_cast<SearchLineEdit*>(this))->updateGeometries();
-    }
-    return m_searchButton->m_menu;
+    setVisible(!text.isEmpty());
 }
 

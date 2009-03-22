@@ -60,82 +60,27 @@
 **
 ****************************************************************************/
 
-#include "searchlineedit.h"
+#ifndef CLEARBUTTON_H
+#define CLEARBUTTON_H
 
-#include "clearbutton.h"
-#include "searchbutton.h"
-
-#include <qevent.h>
-#include <qmenu.h>
-#include <qpainter.h>
-#include <qstyle.h>
-#include <qstyleoption.h>
-
-#include <qdebug.h>
+#include <qabstractbutton.h>
 
 /*
-    SearchLineEdit is an enhanced QLineEdit
-    - A Search icon on the left with optional menu
-    - When there is no text and doesn't have focus an "inactive text" is displayed
-    - When there is text a clear button is displayed on the right hand side
+    Clear button on the right hand side of the search widget.
+    Hidden by default
+    "A circle with an X in it"
  */
-SearchLineEdit::SearchLineEdit(QWidget *parent)
-    : LineEdit(parent)
-    , m_searchButton(0)
+class ClearButton : public QAbstractButton
 {
-    setUpdatesEnabled(false);
-    m_searchButton = new SearchButton(this);
-    updateGeometries();
-    addWidget(m_searchButton, LeftSide);
-    setInactiveText(tr("Search"));
+    Q_OBJECT
 
-    QSizePolicy policy = sizePolicy();
-    setSizePolicy(QSizePolicy::Preferred, policy.verticalPolicy());
+public:
+    ClearButton(QWidget *parent = 0);
+    void paintEvent(QPaintEvent *event);
 
-    // clear button on the right
-    ClearButton *m_clearButton = new ClearButton(this);
-    connect(m_clearButton, SIGNAL(clicked()),
-            this, SLOT(clear()));
-    connect(this, SIGNAL(textChanged(const QString&)),
-            m_clearButton, SLOT(textChanged(const QString&)));
-    addWidget(m_clearButton, RightSide);
-    m_clearButton->hide();
-    updateTextMargins();
-    setUpdatesEnabled(true);
-}
+public slots:
+    void textChanged(const QString &text);
+};
 
-void SearchLineEdit::resizeEvent(QResizeEvent *event)
-{
-    updateGeometries();
-    LineEdit::resizeEvent(event);
-}
-
-void SearchLineEdit::updateGeometries()
-{
-    int menuHeight = height();
-    int menuWidth = menuHeight + 1;
-    if (!m_searchButton->m_menu)
-        menuWidth = (menuHeight / 5) * 4;
-    m_searchButton->setMinimumSize(QSize(menuWidth, menuHeight));
-    m_searchButton->resize(menuWidth, menuHeight);
-    updateTextMargins();
-}
-
-void SearchLineEdit::setMenu(QMenu *menu)
-{
-    if (m_searchButton->m_menu)
-        m_searchButton->m_menu->deleteLater();
-    m_searchButton->m_menu = menu;
-    updateGeometries();
-}
-
-QMenu *SearchLineEdit::menu() const
-{
-    if (!m_searchButton->m_menu) {
-        m_searchButton->m_menu = new QMenu(m_searchButton);
-        if (isVisible())
-            (const_cast<SearchLineEdit*>(this))->updateGeometries();
-    }
-    return m_searchButton->m_menu;
-}
+#endif // CLEARBUTTON_H
 
