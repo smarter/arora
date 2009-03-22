@@ -74,28 +74,9 @@ QT_END_NAMESPACE
 
 class SearchButton;
 
-/*
-    Clear button on the right hand side of the search widget.
-    Hidden by default
-    "A circle with an X in it"
- */
-class ClearButton : public QAbstractButton
-{
-    Q_OBJECT
-
-public:
-    ClearButton(QWidget *parent = 0);
-    void paintEvent(QPaintEvent *event);
-
-public slots:
-    void textChanged(const QString &text);
-};
-
-
 class SearchLineEdit : public LineEdit
 {
     Q_OBJECT
-    Q_PROPERTY(QString inactiveText READ inactiveText WRITE setInactiveText)
 
 public:
     SearchLineEdit(QWidget *parent = 0);
