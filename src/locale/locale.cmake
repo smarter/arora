@@ -6,6 +6,7 @@ set(TRANSLATIONS
     es.ts
     es_CR.ts
     et_EE.ts
+    fi_FI.ts
     fr_CA.ts
     fr_FR.ts
     gl.ts

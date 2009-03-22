@@ -44,6 +44,7 @@ set(arora_SRCS
     bookmarks.cpp
     browserapplication.cpp
     browsermainwindow.cpp
+    clearbutton.cpp
     clearprivatedata.cpp
     downloadmanager.cpp
     edittableview.cpp
@@ -55,6 +56,7 @@ set(arora_SRCS
     networkaccessmanager.cpp
     plaintexteditsearch.cpp
     searchbar.cpp
+    searchbutton.cpp
     searchlineedit.cpp
     settings.cpp
     sourcehighlighter.cpp
@@ -212,46 +214,47 @@ include(locale/locale.cmake REQUIRED)
 
 ## TODO: split that, or find an automatic way to do it
 set( arora_MOCS
-../src/aboutdialog.h
-../src/acceptlanguagedialog.h
-../src/bookmarks.h
-../src/browserapplication.h
-../src/browsermainwindow.h
-../src/clearprivatedata.h
-../src/cookiejar/cookiedialog.h
-../src/cookiejar/cookieexceptionsdialog.h
-../src/cookiejar/cookieexceptionsmodel.h
-../src/cookiejar/cookiejar.h
-../src/cookiejar/cookiemodel.h
-../src/cookiejar/networkcookiejar/networkcookiejar.h
-../src/downloadmanager.h
-../src/edittableview.h
-../src/edittreeview.h
-../src/history.h
-../src/languagemanager.h
-../src/locationbar.h
-../src/locationbar_p.h
-../src/modelmenu.h
-../src/networkaccessmanager.h
-../src/networkmonitor/networkmonitor.h
-../src/plaintexteditsearch.h
-../src/searchbar.h
-../src/searchlineedit.h
-../src/settings.h
-../src/sourcehighlighter.h
-../src/sourceviewer.h
-../src/tabbar.h
-../src/tabwidget.h
-../src/toolbarsearch.h
-../src/utils/autosaver.h
-../src/utils/lineedit.h
-../src/utils/lineedit_p.h
-../src/utils/proxystyle.h
-../src/utils/singleapplication.h
-../src/utils/squeezelabel.h
-../src/webactionmapper.h
-../src/webview.h
-../src/webviewsearch.h)
+    aboutdialog.h
+    acceptlanguagedialog.h
+    bookmarks.h
+    browserapplication.h
+    browsermainwindow.h
+    clearbutton.h
+    clearprivatedata.h
+    cookiejar/cookiedialog.h
+    cookiejar/cookieexceptionsdialog.h
+    cookiejar/cookieexceptionsmodel.h
+    cookiejar/cookiejar.h
+    cookiejar/cookiemodel.h
+    cookiejar/networkcookiejar/networkcookiejar.h
+    downloadmanager.h
+    edittableview.h
+    edittreeview.h
+    history.h
+    languagemanager.h
+    locationbar.h
+    locationbar_p.h
+    modelmenu.h
+    networkaccessmanager.h
+    networkmonitor/networkmonitor.h
+    plaintexteditsearch.h
+    searchbar.h
+    searchlineedit.h
+    settings.h
+    sourcehighlighter.h
+    sourceviewer.h
+    tabbar.h
+    tabwidget.h
+    toolbarsearch.h
+    utils/autosaver.h
+    utils/lineedit.h
+    utils/lineedit_p.h
+    utils/proxystyle.h
+    utils/singleapplication.h
+    utils/squeezelabel.h
+    webactionmapper.h
+    webview.h
+    webviewsearch.h)
 
 qt4_wrap_ui(FORMS ${arora_FORMS})
 qt4_wrap_cpp(MOCS ${arora_MOCS})
