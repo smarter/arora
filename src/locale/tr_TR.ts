@@ -1,14 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE TS>
-<TS version="2.0" language="tr_TR">
+<!DOCTYPE TS><TS version="1.1" language="tr_TR">
 <defaultcodec></defaultcodec>
-<context>
+<context encoding="UTF-8">
     <name>AboutDialog</name>
     <message>
         <source>Lightweight WebKit-based web browser</source>
         <translation>Webkit tabanlı hafif bir web tarayıcı</translation>
     </message>
-    <message utf8="true">
+    <message encoding="UTF-8">
         <source>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
 &lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
 p, li { white-space: pre-wrap; }
@@ -41,8 +40,35 @@ p, li { white-space: pre-wrap; }
 &lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
 p, li { white-space: pre-wrap; }
 &lt;/style&gt;&lt;/head&gt;&lt;body style=&quot;font-size:9pt;&quot;&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Copyright © 2007-2008 Benjamin C. Meyer &amp;lt;&lt;a href=&quot;mailto:ben@meyerhome.net&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0057ae;&quot;&gt;ben@meyerhome.net&lt;/span&gt;&lt;/a&gt;&amp;gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Copyright &#xa9; 2007-2008 Benjamin C. Meyer &amp;lt;&lt;a href=&quot;mailto:ben@meyerhome.net&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0057ae;&quot;&gt;ben@meyerhome.net&lt;/span&gt;&lt;/a&gt;&amp;gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;p, li { white-space: pre-wrap; }&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot;font-size:9pt;&quot;&gt;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Copyright © 2007-2008 Benjamin C. Meyer &amp;lt;&lt;a href=&quot;mailto:ben@meyerhome.net&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0057ae;&quot;&gt;ben@meyerhome.net&lt;/span&gt;&lt;/a&gt;&amp;gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+    </message>
+</context>
+<context>
+    <name>AcceptLanguage</name>
+    <message>
+        <source>Languages</source>
+        <translation>Diller</translation>
+    </message>
+    <message>
+        <source>Languages: in order of preference:</source>
+        <translation>Diller: tercih sırasına göre:</translation>
+    </message>
+    <message>
+        <source>Move &amp;Up</source>
+        <translation>&amp;Yukarı Taşı</translation>
+    </message>
+    <message>
+        <source>Move &amp;Down</source>
+        <translation>&amp;Aşağı Taşı</translation>
+    </message>
+    <message>
+        <source>&amp;Remove</source>
+        <translation>&amp;Kaldır</translation>
+    </message>
+    <message>
+        <source>Add...</source>
+        <translation>Ekle...</translation>
     </message>
 </context>
 <context>
@@ -54,6 +80,18 @@ p, li { white-space: pre-wrap; }
     <message>
         <source>Type a name for the bookmark, and choose where to keep it.</source>
         <translation>Yer imi için bir ad girin ve nerede saklanacağını belirtin.</translation>
+    </message>
+    <message>
+        <source>Url</source>
+        <translation>Url</translation>
+    </message>
+    <message>
+        <source>Title</source>
+        <translation>Başlık</translation>
+    </message>
+    <message>
+        <source>Add Folder</source>
+        <translation>Dizin Ekle</translation>
     </message>
 </context>
 <context>
@@ -88,11 +126,11 @@ p, li { white-space: pre-wrap; }
     </message>
     <message>
         <source>Edit Name</source>
-        <translation type="unfinished"></translation>
+        <translation>İsmi Düzenle</translation>
     </message>
     <message>
         <source>Edit Address</source>
-        <translation type="unfinished"></translation>
+        <translation>Adresi Düzenle</translation>
     </message>
 </context>
 <context>
@@ -157,11 +195,28 @@ p, li { white-space: pre-wrap; }
     </message>
     <message>
         <source>Bookmarks Bar</source>
-        <translation type="unfinished"></translation>
+        <translation>Yerimleri Çubuğu</translation>
     </message>
     <message>
         <source>Bookmarks Menu</source>
-        <translation type="unfinished"></translation>
+        <translation>Yerimleri Menüsü</translation>
+    </message>
+    <message>
+        <source>XBEL (*.xbel *.xml *.html)</source>
+        <translation>XBEL (*.xbel *.xml *.html)</translation>
+    </message>
+    <message>
+        <source>Error when loading html bookmarks: %1
+</source>
+        <translation>Html yerimlerini yüklerken hata: %1
+</translation>
+    </message>
+</context>
+<context>
+    <name>BookmarksMenu</name>
+    <message>
+        <source>Open in Tabs</source>
+        <translation>Sekmede Aç</translation>
     </message>
 </context>
 <context>
@@ -183,19 +238,23 @@ p, li { white-space: pre-wrap; }
     </message>
     <message>
         <source>Open</source>
-        <translation type="unfinished">Aç</translation>
+        <translation>Aç</translation>
     </message>
     <message>
         <source>Open in New &amp;Tab</source>
-        <translation type="unfinished">&amp;Yeni Sekmede Aç</translation>
+        <translation>&amp;Yeni Sekmede Aç</translation>
     </message>
     <message>
         <source>Remove</source>
-        <translation type="unfinished"></translation>
+        <translation>Kaldır</translation>
     </message>
     <message>
         <source>Add Bookmark...</source>
-        <translation type="unfinished">Yer İmi Ekle...</translation>
+        <translation>Yer İmi Ekle...</translation>
+    </message>
+    <message>
+        <source>Add Folder...</source>
+        <translation>Dizin Ekle...</translation>
     </message>
 </context>
 <context>
@@ -335,15 +394,15 @@ Yinede çıkmak istiyor musunuz?</translation>
     </message>
     <message>
         <source>Make Text &amp;Bigger</source>
-        <translation>&amp;Yazıyı Büyüt</translation>
+        <translation type="obsolete">&amp;Yazıyı Büyüt</translation>
     </message>
     <message>
         <source>Make Text &amp;Normal</source>
-        <translation>Yazıyı &amp;Normal Yap</translation>
+        <translation type="obsolete">Yazıyı &amp;Normal Yap</translation>
     </message>
     <message>
         <source>Make Text &amp;Smaller</source>
-        <translation>Yazıyı K&amp;üçült</translation>
+        <translation type="obsolete">Yazıyı K&amp;üçült</translation>
     </message>
     <message>
         <source>Page S&amp;ource</source>
@@ -383,7 +442,7 @@ Yinede çıkmak istiyor musunuz?</translation>
     </message>
     <message>
         <source>Manage Bookmarks...</source>
-        <translation>Yer İmlerini Düzenle...</translation>
+        <translation type="obsolete">Yer İmlerini Düzenle...</translation>
     </message>
     <message>
         <source>Add Bookmark...</source>
@@ -429,7 +488,7 @@ Yinede çıkmak istiyor musunuz?</translation>
     </message>
     <message>
         <source>About &amp;Arora</source>
-        <translation>&amp;Arora Hakkında</translation>
+        <translation type="obsolete">&amp;Arora Hakkında</translation>
     </message>
     <message>
         <source>Navigation</source>
@@ -461,7 +520,7 @@ Yinede çıkmak istiyor musunuz?</translation>
     </message>
     <message>
         <source>Arora</source>
-        <translation>Arora</translation>
+        <translation type="obsolete">Arora</translation>
     </message>
     <message>
         <source>%1 - Arora</source>
@@ -486,7 +545,7 @@ Yinede çıkmak istiyor musunuz?</translation>
     </message>
     <message>
         <source>&lt;b&gt;%1&lt;/b&gt;&lt;br&gt;&lt;br&gt;When private browsing is turned on, some actions concerning your privacy will be disabled:&lt;ul&gt;&lt;li&gt; Webpages are not added to the history.&lt;/li&gt;&lt;li&gt; Items are automatically removed from the Downloads window.&lt;/li&gt;&lt;li&gt; New cookies are not stored, current cookies can&apos;t be accessed.&lt;/li&gt;&lt;li&gt; Site icons won&apos;t be stored, session won&apos;t be saved.&lt;/li&gt;&lt;li&gt; Searches are not addded to the pop-up menu in the search box.&lt;/li&gt;&lt;/ul&gt;Until you close the window, you can still click the Back and Forward buttons to return to the webpages you have opened.</source>
-        <translation>&lt;b&gt;%1&lt;/b&gt;&lt;br&gt;&lt;br&gt;Gizli gezinme aktifken, sizin gizliliğinizle bağlantılı olan bazı davranışlar iptal edilecektir:&lt;ul&gt;&lt;li&gt; Web sayfaları geçmişe eklenmeyecekler.&lt;/li&gt;&lt;li&gt; İndirme penceresindeki öğeler otomatik olarak silinecekler.&lt;/li&gt;&lt;li&gt; Yeni çerezler saklanmayacak, mevcut çerezlere erişim sağlanmayacaktır.&lt;/li&gt;&lt;li&gt; Sayfa ikonları saklanmayacak, oturum kaydedilmeyecektir.&lt;/li&gt;&lt;li&gt; Aramalar, arama kutusundaki açılır menüye eklenmeyecektir.&lt;/li&gt;&lt;/ul&gt;Siz pencereyi kapatana kadar, açtığınız web sayfasına geri dönmek için İleri ve Geri düğmelerine tıklayabileceksiniz.</translation>
+        <translation type="obsolete">&lt;b&gt;%1&lt;/b&gt;&lt;br&gt;&lt;br&gt;Gizli gezinme aktifken, sizin gizliliğinizle bağlantılı olan bazı davranışlar iptal edilecektir:&lt;ul&gt;&lt;li&gt; Web sayfaları geçmişe eklenmeyecekler.&lt;/li&gt;&lt;li&gt; İndirme penceresindeki öğeler otomatik olarak silinecekler.&lt;/li&gt;&lt;li&gt; Yeni çerezler saklanmayacak, mevcut çerezlere erişim sağlanmayacaktır.&lt;/li&gt;&lt;li&gt; Sayfa ikonları saklanmayacak, oturum kaydedilmeyecektir.&lt;/li&gt;&lt;li&gt; Aramalar, arama kutusundaki açılır menüye eklenmeyecektir.&lt;/li&gt;&lt;/ul&gt;Siz pencereyi kapatana kadar, açtığınız web sayfasına geri dönmek için İleri ve Geri düğmelerine tıklayabileceksiniz.</translation>
     </message>
     <message>
         <source>Are you sure you want to close the window?  There are %1 tabs open</source>
@@ -521,7 +580,7 @@ Tüm sayfaları yenilemeyi istiyor musunuz?</translation>
     <message>
         <source>Alt+Ctrl+L</source>
         <comment>Download Manager</comment>
-        <translation>Alt+Ctrl+L</translation>
+        <translation type="obsolete">Alt+Ctrl+L</translation>
     </message>
     <message>
         <source>Find Nex&amp;t</source>
@@ -541,7 +600,49 @@ Tüm sayfaları yenilemeyi istiyor musunuz?</translation>
     </message>
     <message>
         <source>Show &amp;Network Monitor</source>
+        <translation>A&amp;ğ İzleyicisini Göster</translation>
+    </message>
+    <message>
+        <source>Close Window</source>
+        <translation>Pencereyi Kapat</translation>
+    </message>
+    <message>
+        <source>Zoom &amp;In</source>
+        <translation>&amp;Yaklaş</translation>
+    </message>
+    <message>
+        <source>Zoom &amp;Normal</source>
+        <translation>&amp;Normal</translation>
+    </message>
+    <message>
+        <source>Zoom &amp;Out</source>
+        <translation>&amp;Uzaklaş</translation>
+    </message>
+    <message>
+        <source>Zoom &amp;Text Only</source>
+        <translation>Sadece &amp;Metni Yakınlaştır</translation>
+    </message>
+    <message>
+        <source>Show All Bookmarks...</source>
+        <translation>Tüm Yerimlerini Göster...</translation>
+    </message>
+    <message>
+        <source>Add Folder...</source>
+        <translation>Dizin Ekle...</translation>
+    </message>
+    <message>
+        <source>About &amp;%1</source>
+        <comment>About Browser</comment>
+        <translation>Hakkında &amp;%1</translation>
+    </message>
+    <message>
+        <source>&lt;b&gt;%1&lt;/b&gt;&lt;br&gt;&lt;br&gt;When private browsing is turned on, some actions concerning your privacy will be disabled:&lt;ul&gt;&lt;li&gt; Webpages are not added to the history.&lt;/li&gt;&lt;li&gt; Items are automatically removed from the Downloads window.&lt;/li&gt;&lt;li&gt; New cookies are not stored, current cookies can&apos;t be accessed.&lt;/li&gt;&lt;li&gt; Site icons won&apos;t be stored, session won&apos;t be saved.&lt;/li&gt;&lt;li&gt; Searches are not added to the pop-up menu in the search box.&lt;/li&gt;&lt;/ul&gt;Until you close the window, you can still click the Back and Forward buttons to return to the webpages you have opened.</source>
         <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Ctrl+Y</source>
+        <comment>Download Manager</comment>
+        <translation>Ctrl+Y</translation>
     </message>
 </context>
 <context>
@@ -773,11 +874,11 @@ Tüm sayfaları yenilemeyi istiyor musunuz?</translation>
     </message>
     <message>
         <source>seconds</source>
-        <translation>saniye</translation>
+        <translation type="obsolete">saniye</translation>
     </message>
     <message>
         <source>%1 of %2 (%3/sec) %4</source>
-        <translation>%2&apos;nin %1&apos;i (%3/sn) %4</translation>
+        <translation type="obsolete">%2&apos;nin %1&apos;i (%3/sn) %4</translation>
     </message>
     <message>
         <source>?</source>
@@ -789,29 +890,33 @@ Tüm sayfaları yenilemeyi istiyor musunuz?</translation>
     </message>
     <message>
         <source>bytes</source>
-        <translation>byte</translation>
+        <translation type="obsolete">byte</translation>
     </message>
     <message>
         <source>kB</source>
-        <translation>kB</translation>
+        <translation type="obsolete">kB</translation>
     </message>
     <message>
         <source>MB</source>
-        <translation>MB</translation>
+        <translation type="obsolete">MB</translation>
     </message>
     <message numerus="yes">
         <source>- %n minutes remaining</source>
-        <translation>
+        <translation type="obsolete">
             <numerusform>- %n dakika kaldı</numerusform>
             <numerusform>- %n dakika kaldı</numerusform>
         </translation>
     </message>
     <message numerus="yes">
         <source>- %n seconds remaining</source>
-        <translation>
+        <translation type="obsolete">
             <numerusform>- %n saniye kaldı</numerusform>
             <numerusform>- %n saniye kaldı</numerusform>
         </translation>
+    </message>
+    <message>
+        <source>%1 of %2 (%3/sec) - %4</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -822,6 +927,38 @@ Tüm sayfaları yenilemeyi istiyor musunuz?</translation>
             <numerusform>%n İndirilen</numerusform>
             <numerusform>%n İndirilenler</numerusform>
         </translation>
+    </message>
+    <message>
+        <source>There are %1 downloads in progress
+Do you want to quit anyway?</source>
+        <translation>%1 indirme işlemi var
+Yine de çıkmak istiyor musunuz?</translation>
+    </message>
+    <message numerus="yes">
+        <source>%n minutes remaining</source>
+        <translation>
+            <numerusform>%n dakika kaldı</numerusform>
+            <numerusform>%n dakika kaldı</numerusform>
+        </translation>
+    </message>
+    <message numerus="yes">
+        <source>%n seconds remaining</source>
+        <translation>
+            <numerusform>%n saniye kaldı</numerusform>
+            <numerusform>%n saniye kaldı</numerusform>
+        </translation>
+    </message>
+    <message>
+        <source>bytes</source>
+        <translation>bytes</translation>
+    </message>
+    <message>
+        <source>kB</source>
+        <translation>kB</translation>
+    </message>
+    <message>
+        <source>MB</source>
+        <translation>MB</translation>
     </message>
 </context>
 <context>
@@ -910,8 +1047,8 @@ Tüm sayfaları yenilemeyi istiyor musunuz?</translation>
         <translation>&lt;p&gt;İşletim sisteminin varsayılan dilinden&lt;br&gt;başka bir dil seçebilirsiniz.&lt;/p&gt;&lt;p&gt;Lütfen kullanılacak dili seçini&lt;/p&gt;</translation>
     </message>
     <message>
-        <source>Default</source>
-        <translation type="unfinished"></translation>
+        <source>No translation files are installed.</source>
+        <translation>Hiç çeviri dosyası yüklenmemiş.</translation>
     </message>
 </context>
 <context>
@@ -932,7 +1069,7 @@ Tüm sayfaları yenilemeyi istiyor musunuz?</translation>
 %2
 
 Do you want to ignore these errors?</source>
-        <translation>SSL Hataları:
+        <translation type="obsolete">SSL Hataları:
 
 %1
 
@@ -942,45 +1079,61 @@ Do you want to ignore these errors?</source>
     </message>
     <message>
         <source>Do you want to accept all these certificates?</source>
-        <translation>Tüm bu sertifikaları kabul etmek istiyor musunuz?</translation>
+        <translation type="obsolete">Tüm bu sertifikaları kabul etmek istiyor musunuz?</translation>
+    </message>
+    <message>
+        <source> - SSL Errors</source>
+        <translation> - SSL Hataları</translation>
+    </message>
+    <message>
+        <source>&lt;qt&gt;SSL Errors:&lt;br/&gt;&lt;br/&gt;for: &lt;tt&gt;%1&lt;/tt&gt;&lt;ul&gt;&lt;li&gt;%2&lt;/li&gt;&lt;/ul&gt;
+
+Do you want to ignore these errors?&lt;/qt&gt;</source>
+        <translation>&lt;qt&gt;SSL Hataları:&lt;br/&gt;&lt;br/&gt;for: &lt;tt&gt;%1&lt;/tt&gt;&lt;ul&gt;&lt;li&gt;%2&lt;/li&gt;&lt;/ul&gt;
+
+Bu hataları görmezden gelmek istiyor musunuz?&lt;/qt&gt;</translation>
+    </message>
+    <message>
+        <source>&lt;qt&gt;Certifactes:&lt;br/&gt;%1&lt;br/&gt;Do you want to accept all these certificates?&lt;/qt&gt;</source>
+        <translation>&lt;qt&gt;Sertifikalar:&lt;br/&gt;%1&lt;br/&gt;Tüm bu sertifikaları kabul etmek istiyor musunuz?&lt;/qt&gt;</translation>
     </message>
 </context>
 <context>
     <name>NetworkMonitor</name>
     <message>
         <source>Name</source>
-        <translation type="unfinished">İsim</translation>
+        <translation>İsim</translation>
     </message>
     <message>
         <source>Value</source>
-        <translation type="unfinished"></translation>
+        <translation>Değer</translation>
     </message>
 </context>
 <context>
     <name>NetworkMonitorDialog</name>
     <message>
         <source>Network Monitor</source>
-        <translation type="unfinished"></translation>
+        <translation>Ağ İzleyici</translation>
     </message>
     <message>
         <source>Network Requests</source>
-        <translation type="unfinished"></translation>
+        <translation>Ağ İstekleri</translation>
     </message>
     <message>
         <source>Request Headers</source>
-        <translation type="unfinished"></translation>
+        <translation>İstek Başlıkları</translation>
     </message>
     <message>
         <source>Response Headers</source>
-        <translation type="unfinished"></translation>
+        <translation>Yanıt Başlıkları</translation>
     </message>
     <message>
         <source>&amp;Remove</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Kaldır</translation>
     </message>
     <message>
         <source>Remove &amp;All Requests</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Tüm İstekleri Kaldır</translation>
     </message>
 </context>
 <context>
@@ -1051,31 +1204,31 @@ Do you want to ignore these errors?</source>
     <name>RequestModel</name>
     <message>
         <source>Redirect: %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Yönlendir: %1</translation>
     </message>
     <message>
         <source>Method</source>
-        <translation type="unfinished"></translation>
+        <translation>Metod</translation>
     </message>
     <message>
         <source>Address</source>
-        <translation type="unfinished">Adres</translation>
+        <translation>Adres</translation>
     </message>
     <message>
         <source>Response</source>
-        <translation type="unfinished"></translation>
+        <translation>Yanıt</translation>
     </message>
     <message>
         <source>Length</source>
-        <translation type="unfinished"></translation>
+        <translation>Uzunluk</translation>
     </message>
     <message>
         <source>Content Type</source>
-        <translation type="unfinished"></translation>
+        <translation>İçerik Türü</translation>
     </message>
     <message>
         <source>Info</source>
-        <translation type="unfinished"></translation>
+        <translation>Bilgi</translation>
     </message>
 </context>
 <context>
@@ -1180,7 +1333,7 @@ Do you want to ignore these errors?</source>
     </message>
     <message>
         <source>In a tab in the current window</source>
-        <translation>Mevcut penceredeki bir sekmede</translation>
+        <translation type="obsolete">Mevcut penceredeki bir sekmede</translation>
     </message>
     <message>
         <source>In a new window</source>
@@ -1316,7 +1469,7 @@ Do you want to ignore these errors?</source>
     </message>
     <message>
         <source>Http</source>
-        <translation>Http</translation>
+        <translation type="obsolete">Http</translation>
     </message>
     <message>
         <source>Host name:</source>
@@ -1340,11 +1493,47 @@ Do you want to ignore these errors?</source>
     </message>
     <message>
         <source>Style Sheet:</source>
-        <translation>Style Sheet</translation>
+        <translation>Style Sheet:</translation>
     </message>
     <message>
         <source>Show only one close button instead of one for each tab</source>
+        <translation>Her sekmede göstermek yerine tek bir kapatma düğmesi göster</translation>
+    </message>
+    <message>
+        <source>Preferred languages for viewing webpages in:</source>
+        <translation>Web sayfalarını gezinirken tercih edilecek dil:</translation>
+    </message>
+    <message>
+        <source>Block Popup Windows</source>
+        <translation>Açılır Pencereleri Engelle</translation>
+    </message>
+    <message>
+        <source>Opening links</source>
         <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Links that want to open in a new window:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>In a new selected tab in the current window</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>In a new tab in the current window</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>In the current tab</source>
+        <translation>Mevcut sekmede</translation>
+    </message>
+    <message>
+        <source>Http (Secure)</source>
+        <translation>Http (Güvenli)</translation>
+    </message>
+    <message>
+        <source>Http (Transparent)</source>
+        <translation>Http (Transparent)</translation>
     </message>
 </context>
 <context>
@@ -1367,11 +1556,11 @@ Do you want to ignore these errors?</source>
     </message>
     <message>
         <source>&amp;View</source>
-        <translation type="unfinished">&amp;Görünüm</translation>
+        <translation>&amp;Görünüm</translation>
     </message>
     <message>
         <source>&amp;Wrap lines</source>
-        <translation type="unfinished"></translation>
+        <translation>Satırları &amp;kaydır</translation>
     </message>
 </context>
 <context>
@@ -1386,7 +1575,7 @@ Do you want to ignore these errors?</source>
     </message>
     <message>
         <source>New &amp;Tab</source>
-        <translation>Yeni Se&amp;kme</translation>
+        <translation type="obsolete">Yeni Se&amp;kme</translation>
     </message>
     <message>
         <source>Duplicate Tab</source>
@@ -1453,11 +1642,35 @@ Bu sayfayı gerçekten kapatmayı istiyor musunuz?
     </message>
     <message>
         <source>Ctrl-]</source>
-        <translation type="unfinished"></translation>
+        <translation>Ctrl-]</translation>
     </message>
     <message>
         <source>Ctrl-[</source>
-        <translation type="unfinished"></translation>
+        <translation>Ctrl-[</translation>
+    </message>
+    <message>
+        <source>Saved Tabs</source>
+        <translation>Saklanan Sekmeler</translation>
+    </message>
+    <message>
+        <source>Loading...</source>
+        <translation>Yükleniyor...</translation>
+    </message>
+    <message>
+        <source>Loading %1% (%2 %3)...</source>
+        <translation>Yükleniyor %1% (%2 %3)...</translation>
+    </message>
+    <message>
+        <source>Finished loading</source>
+        <translation>Yükleme bitti</translation>
+    </message>
+    <message>
+        <source>Failed to load</source>
+        <translation>Yükleme başarısız</translation>
+    </message>
+    <message>
+        <source>Bookmark All Tabs</source>
+        <translation>Tüm Sekmeleri Yerimlerine Ekle</translation>
     </message>
 </context>
 <context>
@@ -1472,7 +1685,11 @@ Bu sayfayı gerçekten kapatmayı istiyor musunuz?
     </message>
     <message>
         <source>Clear Recent Searches</source>
-        <translation>Yeni Aramaları Temizle</translation>
+        <translation type="obsolete">Yeni Aramaları Temizle</translation>
+    </message>
+    <message>
+        <source>Suggestions</source>
+        <translation>Öneriler</translation>
     </message>
 </context>
 <context>
@@ -1483,19 +1700,19 @@ Bu sayfayı gerçekten kapatmayı istiyor musunuz?
     </message>
     <message>
         <source>When connecting to: %1.</source>
-        <translation type="unfinished"></translation>
+        <translation>Bağlanırken: %1.</translation>
     </message>
     <message>
         <source>Check the address for errors such as &lt;b&gt;ww&lt;/b&gt;.arora-browser.org instead of &lt;b&gt;www&lt;/b&gt;.arora-browser.org</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>If the address is correct, try to check the network connection.</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;b&gt;www&lt;/b&gt;.arora-browser.org yerine &lt;b&gt;ww&lt;/b&gt;.arora-browser.org şeklindeki adres hatalarını kontrol edin</translation>
     </message>
     <message>
         <source>If your computer or network is protected by a firewall or proxy, make sure that the browser is permitted to access the network.</source>
-        <translation type="unfinished"></translation>
+        <translation>Ağınız ya da bilgisayarınız güvenlik duvarı veya vekil sunucu ile korunuyorsa, tarayıcınızın ağ erişimine izin verildiğinden emin olunuz.</translation>
+    </message>
+    <message>
+        <source>If the address is correct, try checking the network connection.</source>
+        <translation>Adres doğruysa, ağ bağlantınızı kontrol etmeyi deneyin.</translation>
     </message>
 </context>
 <context>
