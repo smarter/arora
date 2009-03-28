@@ -17,30 +17,47 @@
  * Boston, MA  02110-1301  USA
  */
 
-#include <QtGui/QtGui>
-#include "searchlineedit.h"
+#include <qmainwindow.h>
+#include <qsplitter.h>
+#include <qcombobox.h>
+#include <qlayout.h>
+#include <qtoolbar.h>
+
+#include "browserapplication.h"
+#include "locationbar.h"
+#include "webview.h"
 
 int main(int argc, char **argv)
 {
-    QApplication application(argc, argv);
+    BrowserApplication application(argc, argv);
+    QCoreApplication::setApplicationName(QLatin1String("urllineeditexample"));
     QMainWindow w;
 
     QWidget *window = new QWidget;
-    QPushButton *button1 = new QPushButton("One");
-    QPushButton *button2 = new QPushButton("Two");
-    SearchLineEdit *s1 = new SearchLineEdit(window);
-    SearchLineEdit *s2 = new SearchLineEdit(window);
-    s2->menu()->addAction("f");
+    QComboBox *comboBox = new QComboBox(window);
+    comboBox->setEditable(true);
+    QLineEdit *lineEdit = new QLineEdit(window);
+    LocationBar *s1 = new LocationBar(window);
+    LocationBar *s2 = new LocationBar(window);
+    WebView *view = new WebView(window);
+    view->setUrl(QUrl("http://www.google.com"));
+    s2->setWebView(view);
 
     QVBoxLayout *layout = new QVBoxLayout;
+    layout->addWidget(comboBox);
+    layout->addWidget(lineEdit);
     layout->addWidget(s1);
     layout->addWidget(s2);
-    layout->addWidget(button1);
-    layout->addWidget(button2);
-
+    layout->addWidget(view);
     window->setLayout(layout);
     w.show();
     w.setCentralWidget(window);
+
+    QToolBar *bar = w.addToolBar("foo");
+    QSplitter *splitter = new QSplitter(window);
+    splitter->addWidget(new LocationBar);
+    splitter->addWidget(new QLineEdit);
+    bar->addWidget(splitter);
     return application.exec();
 }
 

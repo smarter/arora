@@ -82,6 +82,10 @@ p, li { white-space: pre-wrap; }
         <source>Title</source>
         <translation>Tytuł</translation>
     </message>
+    <message>
+        <source>Add Folder</source>
+        <translation>Dodaj katalog</translation>
+    </message>
 </context>
 <context>
     <name>BookmarksDialog</name>
@@ -190,6 +194,15 @@ p, li { white-space: pre-wrap; }
         <source>Bookmarks Menu</source>
         <translation>Menu zakładek</translation>
     </message>
+    <message>
+        <source>XBEL (*.xbel *.xml *.html)</source>
+        <translation>XBEL (*.xbel *.xml *.html)</translation>
+    </message>
+    <message>
+        <source>Error when loading html bookmarks: %1
+</source>
+        <translation>Błąd w trakcie ładowania zakładek HTML: %1</translation>
+    </message>
 </context>
 <context>
     <name>BookmarksMenu</name>
@@ -230,6 +243,10 @@ p, li { white-space: pre-wrap; }
     <message>
         <source>Add Bookmark...</source>
         <translation>Dodaj zakładkę...</translation>
+    </message>
+    <message>
+        <source>Add Folder...</source>
+        <translation>Dodaj katalog...</translation>
     </message>
 </context>
 <context>
@@ -421,7 +438,7 @@ Czy mimo to chcesz zakończyć?</translation>
     </message>
     <message>
         <source>Manage Bookmarks...</source>
-        <translation>Zarządzaj zakładkami...</translation>
+        <translation type="obsolete">Zarządzaj zakładkami...</translation>
     </message>
     <message>
         <source>Add Bookmark...</source>
@@ -541,7 +558,7 @@ Czy mimo to chcesz zakończyć?</translation>
     <message>
         <source>The web inspector will only work correctly for pages that were loaded after enabling.
 Do you want to reload all pages?</source>
-        <translation>Inspektor stron porawnie działa tylko dla stron, które zostały załadowane po włączeniu inspektora.
+        <translation>Inspektor stron działa poprawnie tylko dla stron, które zostały wczytane po jego aktywowaniu.
 Czy chcesz odświeżyć wszystkie strony?</translation>
     </message>
     <message>
@@ -654,6 +671,14 @@ Czy chcesz odświeżyć wszystkie strony?</translation>
     <message>
         <source>&lt;b&gt;%1&lt;/b&gt;&lt;br&gt;&lt;br&gt;When private browsing is turned on, some actions concerning your privacy will be disabled:&lt;ul&gt;&lt;li&gt; Webpages are not added to the history.&lt;/li&gt;&lt;li&gt; Items are automatically removed from the Downloads window.&lt;/li&gt;&lt;li&gt; New cookies are not stored, current cookies can&apos;t be accessed.&lt;/li&gt;&lt;li&gt; Site icons won&apos;t be stored, session won&apos;t be saved.&lt;/li&gt;&lt;li&gt; Searches are not added to the pop-up menu in the search box.&lt;/li&gt;&lt;/ul&gt;Until you close the window, you can still click the Back and Forward buttons to return to the webpages you have opened.</source>
         <translation>&lt;b&gt;%1&lt;/b&gt;&lt;br /&gt;&lt;br /&gt;Kiedy prywatne przeglądanie jest włączone, niektóre akcje wpływające na Twoją prywatność są wyłączone.&lt;ul&gt;&lt;li&gt;Historia nie jest uzupełniana o odwiedzane strony.&lt;/li&gt;&lt;li&gt;Pobrane pliki są automatycznie usuwane z okna Pobierania.&lt;/li&gt;&lt;li&gt;Nowe ciasteczka nie są przechowywane, aktualnie istniejące nie mogą być modyfikowane.&lt;/li&gt;&lt;li&gt;Ikony stron nie będą przechowywane&lt;/li&gt;&lt;li&gt;Sesja nie zostanie zapisana.&lt;/li&gt;&lt;li&gt;Wyszukiwania nie są dodawane do historii wyszukiwań.&lt;/li&gt;&lt;/ul&gt;Dopóki nie zamkniesz okna, możesz zawsze uzyć przycisków Wstecz i Do przodu, by wrócić do stron, które przeglądałeś.</translation>
+    </message>
+    <message>
+        <source>Show All Bookmarks...</source>
+        <translation>Pokaż wszystkie zakładki...</translation>
+    </message>
+    <message>
+        <source>Add Folder...</source>
+        <translation>Dodaj katalog...</translation>
     </message>
 </context>
 <context>
@@ -893,7 +918,7 @@ Czy chcesz odświeżyć wszystkie strony?</translation>
     </message>
     <message>
         <source>seconds</source>
-        <translation>sekund</translation>
+        <translation type="obsolete">sekund</translation>
     </message>
     <message>
         <source>minutes</source>
@@ -905,7 +930,7 @@ Czy chcesz odświeżyć wszystkie strony?</translation>
     </message>
     <message>
         <source>%1 of %2 (%3/sec) %4</source>
-        <translation>%1 z %2 (%3/sek) %4</translation>
+        <translation type="obsolete">%1 z %2 (%3/sek) %4</translation>
     </message>
     <message>
         <source>?</source>
@@ -917,19 +942,19 @@ Czy chcesz odświeżyć wszystkie strony?</translation>
     </message>
     <message>
         <source>bytes</source>
-        <translation>bajtów</translation>
+        <translation type="obsolete">bajtów</translation>
     </message>
     <message>
         <source>kB</source>
-        <translation>kB</translation>
+        <translation type="obsolete">kB</translation>
     </message>
     <message>
         <source>MB</source>
-        <translation>MB</translation>
+        <translation type="obsolete">MB</translation>
     </message>
     <message numerus="yes">
         <source>- %n minutes remaining</source>
-        <translation>
+        <translation type="obsolete">
             <numerusform>- %n minuta pozostała</numerusform>
             <numerusform>- %n minuty pozostały</numerusform>
             <numerusform>- %n minut pozostało</numerusform>
@@ -937,7 +962,7 @@ Czy chcesz odświeżyć wszystkie strony?</translation>
     </message>
     <message numerus="yes">
         <source>- %n seconds remaining</source>
-        <translation>
+        <translation type="obsolete">
             <numerusform>- %n sekunda pozostała</numerusform>
             <numerusform>- %n sekundy pozostały</numerusform>
             <numerusform>- %n sekund pozostało</numerusform>
@@ -946,6 +971,10 @@ Czy chcesz odświeżyć wszystkie strony?</translation>
     <message>
         <source>Error opening output file: %1</source>
         <translation>Błąd w trakcie otwierania pliku docelowego: %1</translation>
+    </message>
+    <message>
+        <source>%1 of %2 (%3/sec) - %4</source>
+        <translation>%1 z %2 (%3/sek) - %4</translation>
     </message>
 </context>
 <context>
@@ -971,6 +1000,34 @@ Czy chcesz odświeżyć wszystkie strony?</translation>
 Do you want to quit anyway?</source>
         <translation>Trwa pobieranie %1 plików.
 Czy mimo to chcesz zakończyć?</translation>
+    </message>
+    <message numerus="yes">
+        <source>%n minutes remaining</source>
+        <translation>
+            <numerusform>%n minuta pozostała</numerusform>
+            <numerusform>%n minuty pozostały</numerusform>
+            <numerusform>%n minut pozostało</numerusform>
+        </translation>
+    </message>
+    <message numerus="yes">
+        <source>%n seconds remaining</source>
+        <translation>
+            <numerusform>%n sekunda pozostała</numerusform>
+            <numerusform>%n sekundy pozostały</numerusform>
+            <numerusform>%n sekund pozostało</numerusform>
+        </translation>
+    </message>
+    <message>
+        <source>bytes</source>
+        <translation>bajtów</translation>
+    </message>
+    <message>
+        <source>kB</source>
+        <translation>kB</translation>
+    </message>
+    <message>
+        <source>MB</source>
+        <translation>MB</translation>
     </message>
 </context>
 <context>
@@ -1620,7 +1677,7 @@ Czy chcesz zignorować te błędy?&lt;/qt&gt;</translation>
     <name>TabBar</name>
     <message>
         <source>New &amp;Tab</source>
-        <translation>Nowa &amp;karta</translation>
+        <translation type="obsolete">Nowa &amp;karta</translation>
     </message>
     <message>
         <source>Duplicate Tab</source>
@@ -1717,6 +1774,14 @@ Czy na pewno chcesz zamknąć tę stronę?
         <source>Failed to load</source>
         <translation>Ładowanie nie powiodło się</translation>
     </message>
+    <message>
+        <source>Saved Tabs</source>
+        <translation>Zapisane karty</translation>
+    </message>
+    <message>
+        <source>Bookmark All Tabs</source>
+        <translation>Dodaj wszystkie karty do zakładek</translation>
+    </message>
 </context>
 <context>
     <name>ToolbarSearch</name>
@@ -1734,7 +1799,11 @@ Czy na pewno chcesz zamknąć tę stronę?
     </message>
     <message>
         <source>Clear Recent Searches</source>
-        <translation>Wyczyść listę ostatnio wyszukiwanych fraz</translation>
+        <translation type="obsolete">Wyczyść listę ostatnio wyszukiwanych fraz</translation>
+    </message>
+    <message>
+        <source>Suggestions</source>
+        <translation>Sugestie</translation>
     </message>
 </context>
 <context>

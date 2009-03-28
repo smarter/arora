@@ -45,11 +45,39 @@ p, li { white-space: pre-wrap; }
 p, li { white-space: pre-wrap; }
 &lt;/style&gt;&lt;/head&gt;&lt;body style=&quot;font-size:9pt;&quot;&gt;
 &lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Copyright © 2007-2008 Benjamin C. Meyer &amp;lt;&lt;a href=&quot;mailto:ben@meyerhome.net&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0057ae;&quot;&gt;ben@meyerhome.net&lt;/span&gt;&lt;/a&gt;&amp;gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <translatorcomment>Update the dates in the copyright notice?</translatorcomment>
         <translation>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
 &lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
 p, li { white-space: pre-wrap; }
 &lt;/style&gt;&lt;/head&gt;&lt;body style=&quot;font-size:9pt;&quot;&gt;
 &lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Opphavsrett © 2007-2008 Benjamin C. Meyer &amp;lt;&lt;a href=&quot;mailto:ben@meyerhome.net&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0057ae;&quot;&gt;ben@meyerhome.net&lt;/span&gt;&lt;/a&gt;&amp;gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+    </message>
+</context>
+<context>
+    <name>AcceptLanguage</name>
+    <message>
+        <source>Languages</source>
+        <translation>Språk</translation>
+    </message>
+    <message>
+        <source>Languages: in order of preference:</source>
+        <translation>Språk: ordnet etter preferanse:</translation>
+    </message>
+    <message>
+        <source>Move &amp;Up</source>
+        <translation>Flytt &amp;opp</translation>
+    </message>
+    <message>
+        <source>Move &amp;Down</source>
+        <translation>Flytt &amp;ned</translation>
+    </message>
+    <message>
+        <source>&amp;Remove</source>
+        <translation>&amp;Fjern</translation>
+    </message>
+    <message>
+        <source>Add...</source>
+        <translation>Legg til...</translation>
     </message>
 </context>
 <context>
@@ -61,6 +89,18 @@ p, li { white-space: pre-wrap; }
     <message>
         <source>Type a name for the bookmark, and choose where to keep it.</source>
         <translation>Gi bokmerket et navn og velg hvor du vil lagre det.</translation>
+    </message>
+    <message>
+        <source>Url</source>
+        <translation>Addresse</translation>
+    </message>
+    <message>
+        <source>Title</source>
+        <translation>Tittel</translation>
+    </message>
+    <message>
+        <source>Add Folder</source>
+        <translation>Legg til mappe</translation>
     </message>
 </context>
 <context>
@@ -156,19 +196,37 @@ p, li { white-space: pre-wrap; }
     </message>
     <message>
         <source>Name Change</source>
+        <translatorcomment>I could not find this in the UI, so I&apos;m not sure of the context</translatorcomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Address Change</source>
+        <translatorcomment>I could not find this in the UI, so I&apos;m not sure of the context</translatorcomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Bookmarks Bar</source>
-        <translation type="unfinished"></translation>
+        <translation>Bokmerkelinjen</translation>
     </message>
     <message>
         <source>Bookmarks Menu</source>
-        <translation type="unfinished"></translation>
+        <translation>Bokmerkemeny</translation>
+    </message>
+    <message>
+        <source>XBEL (*.xbel *.xml *.html)</source>
+        <translation>XBEL (*.xbel *.xml *.html)</translation>
+    </message>
+    <message>
+        <source>Error when loading html bookmarks: %1
+</source>
+        <translation>Feil ved lasting av html bokmerker: %1</translation>
+    </message>
+</context>
+<context>
+    <name>BookmarksMenu</name>
+    <message>
+        <source>Open in Tabs</source>
+        <translation>Åpne i faner</translation>
     </message>
 </context>
 <context>
@@ -190,19 +248,23 @@ p, li { white-space: pre-wrap; }
     </message>
     <message>
         <source>Open</source>
-        <translation type="unfinished">Åpne</translation>
+        <translation>Åpne</translation>
     </message>
     <message>
         <source>Open in New &amp;Tab</source>
-        <translation type="unfinished">Åpne i ny &amp;fane</translation>
+        <translation>Åpne i ny &amp;fane</translation>
     </message>
     <message>
         <source>Remove</source>
-        <translation type="unfinished"></translation>
+        <translation>Fjern</translation>
     </message>
     <message>
         <source>Add Bookmark...</source>
-        <translation type="unfinished">Legg til bokmerke...</translation>
+        <translation>Legg til bokmerke...</translation>
+    </message>
+    <message>
+        <source>Add Folder...</source>
+        <translation>Legg til mappe...</translation>
     </message>
 </context>
 <context>
@@ -246,11 +308,11 @@ Er du sikker på at du vil avslutte Arora?</translation>
     </message>
     <message>
         <source>Open &amp;Location...</source>
-        <translation>Åpne &amp;adresse...</translation>
+        <translation>Åpne a&amp;dresse...</translation>
     </message>
     <message>
         <source>&amp;Save As...</source>
-        <translation>&amp;Lagre som...</translation>
+        <translation>La&amp;gre som...</translation>
     </message>
     <message>
         <source>&amp;Import Bookmarks...</source>
@@ -262,15 +324,15 @@ Er du sikker på at du vil avslutte Arora?</translation>
     </message>
     <message>
         <source>P&amp;rint Preview...</source>
-        <translation>Fo&amp;rhåndsvisning...</translation>
+        <translation>&amp;Forhåndsvisning...</translation>
     </message>
     <message>
         <source>&amp;Print...</source>
-        <translation>Skriv &amp;ut...</translation>
+        <translation>&amp;Skriv ut...</translation>
     </message>
     <message>
         <source>Private &amp;Browsing...</source>
-        <translation>Pri&amp;vat surfing...</translation>
+        <translation>&amp;Privat surfing...</translation>
     </message>
     <message>
         <source>&amp;Quit</source>
@@ -366,7 +428,7 @@ Er du sikker på at du vil avslutte Arora?</translation>
     </message>
     <message>
         <source>Manage Bookmarks...</source>
-        <translation>Håndter bokmerker...</translation>
+        <translation type="obsolete">Håndter bokmerker...</translation>
     </message>
     <message>
         <source>Add Bookmark...</source>
@@ -374,11 +436,11 @@ Er du sikker på at du vil avslutte Arora?</translation>
     </message>
     <message>
         <source>&amp;Window</source>
-        <translation>&amp;Vindu</translation>
+        <translation>V&amp;indu</translation>
     </message>
     <message>
         <source>&amp;Tools</source>
-        <translation>&amp;Verktøy</translation>
+        <translation>V&amp;erktøy</translation>
     </message>
     <message>
         <source>Web &amp;Search</source>
@@ -391,11 +453,11 @@ Er du sikker på at du vil avslutte Arora?</translation>
     </message>
     <message>
         <source>Enable Web &amp;Inspector</source>
-        <translation></translation>
+        <translation>&amp;Aktiver nettinspektøren</translation>
     </message>
     <message>
         <source>&amp;Help</source>
-        <translation>&amp;Hjelp</translation>
+        <translation>H&amp;jelp</translation>
     </message>
     <message>
         <source>About &amp;Qt</source>
@@ -403,7 +465,7 @@ Er du sikker på at du vil avslutte Arora?</translation>
     </message>
     <message>
         <source>About &amp;Arora</source>
-        <translation>Om &amp;Arora</translation>
+        <translation type="obsolete">Om &amp;Arora</translation>
     </message>
     <message>
         <source>Navigation</source>
@@ -411,23 +473,23 @@ Er du sikker på at du vil avslutte Arora?</translation>
     </message>
     <message>
         <source>Show Status Bar</source>
-        <translation>Vis statuslinje</translation>
+        <translation>Vis statuslinjen</translation>
     </message>
     <message>
         <source>Hide Status Bar</source>
-        <translation>Skjul statuslinje</translation>
+        <translation>Skjul statuslinjen</translation>
     </message>
     <message>
         <source>Show Toolbar</source>
-        <translation>Vis verktøylinje</translation>
+        <translation>Vis verktøylinjen</translation>
     </message>
     <message>
         <source>Hide Toolbar</source>
-        <translation>Skjul verktøylinje</translation>
+        <translation>Skjul verktøylinjen</translation>
     </message>
     <message>
         <source>Arora</source>
-        <translation>Arora</translation>
+        <translation type="obsolete">Arora</translation>
     </message>
     <message>
         <source>%1 - Arora</source>
@@ -440,7 +502,7 @@ Er du sikker på at du vil avslutte Arora?</translation>
     </message>
     <message>
         <source>Web Resources (*.html *.htm *.svg *.png *.gif *.svgz);;All files (*.*)</source>
-        <translation>Nettresurs (*.html *.htm *.svg *.png *.gif *.svgz);;Alle filer (*.*)</translation>
+        <translation>Nettresurser (*.html *.htm *.svg *.png *.gif *.svgz);;Alle filer (*.*)</translation>
     </message>
     <message>
         <source>Print Document</source>
@@ -460,12 +522,13 @@ Er du sikker på at du vil avslutte Arora?</translation>
     </message>
     <message>
         <source>Web Inspector</source>
-        <translation></translation>
+        <translation>Nettinspektør</translation>
     </message>
     <message>
         <source>The web inspector will only work correctly for pages that were loaded after enabling.
 Do you want to reload all pages?</source>
-        <translation></translation>
+        <translation>Nettinspektøren virker kun som den skal for sider som blir lastet etter at den ble aktivert.
+Vil du laste alle sider på nytt?</translation>
     </message>
     <message>
         <source>Stop loading the current page</source>
@@ -477,16 +540,16 @@ Do you want to reload all pages?</source>
     </message>
     <message>
         <source>Downloads</source>
-        <translation>Nedlastninger</translation>
+        <translation>Nedlastinger</translation>
     </message>
     <message>
         <source>Alt+Ctrl+L</source>
         <comment>Download Manager</comment>
-        <translation>Alt+Ctrl+L</translation>
+        <translation type="obsolete">Alt+Ctrl+L</translation>
     </message>
     <message>
         <source>&amp;Clear Private Data</source>
-        <translation>&amp;Slett privat data</translation>
+        <translation>&amp;Slett privat informasjon</translation>
     </message>
     <message>
         <source>Ctrl+Shift+Delete</source>
@@ -503,7 +566,7 @@ Do you want to reload all pages?</source>
     </message>
     <message>
         <source>&lt;b&gt;%1&lt;/b&gt;&lt;br&gt;&lt;br&gt;When private browsing is turned on, some actions concerning your privacy will be disabled:&lt;ul&gt;&lt;li&gt; Webpages are not added to the history.&lt;/li&gt;&lt;li&gt; Items are automatically removed from the Downloads window.&lt;/li&gt;&lt;li&gt; New cookies are not stored, current cookies can&apos;t be accessed.&lt;/li&gt;&lt;li&gt; Site icons won&apos;t be stored, session won&apos;t be saved.&lt;/li&gt;&lt;li&gt; Searches are not addded to the pop-up menu in the search box.&lt;/li&gt;&lt;/ul&gt;Until you close the window, you can still click the Back and Forward buttons to return to the webpages you have opened.</source>
-        <translation>&lt;b&gt;%1&lt;/b&gt;&lt;br&gt;&lt;br&gt;Noen handlinger relatert til dine personlige opplysninger vil bli deaktiverte når privat surfing er skrudd på:&lt;ul&gt;&lt;li&gt; Nettsider blir ikke lagt til i historien.&lt;/li&gt;&lt;li&gt; Elementer blir automatisk fjernet fra Nedlastninger vinduet.&lt;/li&gt;&lt;li&gt; Nye informasjonskapsler blir ikke lagret og gamle kan ikke åpnes.&lt;/li&gt;&lt;li&gt; Ikoner og økter blir ikke lagret.&lt;/li&gt;&lt;li&gt; Søk blir ikke lagt til i sprett-opp menyen i søkeboksen.&lt;/li&gt;&lt;/ul&gt;Du kan fremdeles klikke Tilbake og Fram intill du lukker vinduet.</translation>
+        <translation type="obsolete">&lt;b&gt;%1&lt;/b&gt;&lt;br&gt;&lt;br&gt;Noen handlinger relatert til dine personlige opplysninger vil bli deaktiverte når privat surfing er skrudd på:&lt;ul&gt;&lt;li&gt; Nettsider blir ikke lagt til i historien.&lt;/li&gt;&lt;li&gt; Elementer blir automatisk fjernet fra Nedlastninger vinduet.&lt;/li&gt;&lt;li&gt; Nye informasjonskapsler blir ikke lagret og gamle kan ikke åpnes.&lt;/li&gt;&lt;li&gt; Ikoner og økter blir ikke lagret.&lt;/li&gt;&lt;li&gt; Søk blir ikke lagt til i sprett-opp menyen i søkeboksen.&lt;/li&gt;&lt;/ul&gt;Du kan fremdeles klikke Tilbake og Fram intill du lukker vinduet.</translation>
     </message>
     <message>
         <source>Find &amp;Next</source>
@@ -523,15 +586,15 @@ Do you want to reload all pages?</source>
     </message>
     <message>
         <source>Make Text &amp;Bigger</source>
-        <translation>Gjør teksten &amp;større</translation>
+        <translation type="obsolete">Gjør teksten &amp;større</translation>
     </message>
     <message>
         <source>Make Text &amp;Normal</source>
-        <translation>Gjør teksten &amp;normal</translation>
+        <translation type="obsolete">Gjør teksten &amp;normal</translation>
     </message>
     <message>
         <source>Make Text &amp;Smaller</source>
-        <translation>Gjør teksten &amp;mindre</translation>
+        <translation type="obsolete">Gjør teksten &amp;mindre</translation>
     </message>
     <message>
         <source>Find Nex&amp;t</source>
@@ -551,7 +614,49 @@ Do you want to reload all pages?</source>
     </message>
     <message>
         <source>Show &amp;Network Monitor</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Vis nettverksovervåkeren</translation>
+    </message>
+    <message>
+        <source>Close Window</source>
+        <translation>Lukk vinduet</translation>
+    </message>
+    <message>
+        <source>Zoom &amp;In</source>
+        <translation>Skaler &amp;in</translation>
+    </message>
+    <message>
+        <source>Zoom &amp;Normal</source>
+        <translation>&amp;Normal skalering</translation>
+    </message>
+    <message>
+        <source>Zoom &amp;Out</source>
+        <translation>Skaler &amp;ut</translation>
+    </message>
+    <message>
+        <source>Zoom &amp;Text Only</source>
+        <translation>Skaler kun &amp;tekst</translation>
+    </message>
+    <message>
+        <source>Show All Bookmarks...</source>
+        <translation>Vis alle bokmerker...</translation>
+    </message>
+    <message>
+        <source>Add Folder...</source>
+        <translation>Legg til mappe...</translation>
+    </message>
+    <message>
+        <source>About &amp;%1</source>
+        <comment>About Browser</comment>
+        <translation>Om &amp;%1</translation>
+    </message>
+    <message>
+        <source>&lt;b&gt;%1&lt;/b&gt;&lt;br&gt;&lt;br&gt;When private browsing is turned on, some actions concerning your privacy will be disabled:&lt;ul&gt;&lt;li&gt; Webpages are not added to the history.&lt;/li&gt;&lt;li&gt; Items are automatically removed from the Downloads window.&lt;/li&gt;&lt;li&gt; New cookies are not stored, current cookies can&apos;t be accessed.&lt;/li&gt;&lt;li&gt; Site icons won&apos;t be stored, session won&apos;t be saved.&lt;/li&gt;&lt;li&gt; Searches are not added to the pop-up menu in the search box.&lt;/li&gt;&lt;/ul&gt;Until you close the window, you can still click the Back and Forward buttons to return to the webpages you have opened.</source>
+        <translation>&lt;b&gt;%1&lt;/b&gt;&lt;br&gt;&lt;br&gt;Noen handlinger relatert til dine personlige opplysninger vil bli deaktiverte når privat surfing er skrudd på:&lt;ul&gt;&lt;li&gt; Nettsider blir ikke lagt til i historien.&lt;/li&gt;&lt;li&gt; Elementer blir automatisk fjernet fra Nedlastinger vinduet.&lt;/li&gt;&lt;li&gt; Nye informasjonskapsler blir ikke lagret og gamle kan ikke åpnes.&lt;/li&gt;&lt;li&gt; Ikoner og økter blir ikke lagret.&lt;/li&gt;&lt;li&gt; Søk blir ikke lagt til i sprett-opp menyen i søkeboksen.&lt;/li&gt;&lt;/ul&gt;Du kan fremdeles klikke Tilbake og Fram intill du lukker vinduet.</translation>
+    </message>
+    <message>
+        <source>Ctrl+Y</source>
+        <comment>Download Manager</comment>
+        <translation>Ctrl+Y</translation>
     </message>
 </context>
 <context>
@@ -573,15 +678,15 @@ Do you want to reload all pages?</source>
     </message>
     <message>
         <source>&amp;Browsing History</source>
-        <translation>S&amp;urfehistorie</translation>
+        <translation>&amp;Surfehistorie</translation>
     </message>
     <message>
         <source>&amp;Download History</source>
-        <translation>&amp;Nedlastningshistorie</translation>
+        <translation>&amp;Nedlastingshistorie</translation>
     </message>
     <message>
         <source>&amp;Search History</source>
-        <translation>&amp;Søkehistorie</translation>
+        <translation>S&amp;økehistorie</translation>
     </message>
     <message>
         <source>&amp;Cookies</source>
@@ -593,7 +698,7 @@ Do you want to reload all pages?</source>
     </message>
     <message>
         <source>Website &amp;Icons</source>
-        <translation>Nettside ikoner</translation>
+        <translation>N&amp;ettside ikoner</translation>
     </message>
     <message>
         <source>Clear &amp;Private Data</source>
@@ -605,7 +710,7 @@ Do you want to reload all pages?</source>
     </message>
     <message>
         <source>C&amp;ached Web Pages</source>
-        <translation>Mellomlagrede nettsider</translation>
+        <translation>&amp;Mellomlagrede nettsider</translation>
     </message>
 </context>
 <context>
@@ -767,11 +872,11 @@ Do you want to reload all pages?</source>
     </message>
     <message>
         <source>seconds</source>
-        <translation>sekunder</translation>
+        <translation type="obsolete">sekunder</translation>
     </message>
     <message>
         <source>%1 of %2 (%3/sec) %4</source>
-        <translation>%1 av %2 (%3/sek) %4</translation>
+        <translation type="obsolete">%1 av %2 (%3/sek) %4</translation>
     </message>
     <message>
         <source>?</source>
@@ -783,15 +888,15 @@ Do you want to reload all pages?</source>
     </message>
     <message>
         <source>bytes</source>
-        <translation>bytes</translation>
+        <translation type="obsolete">bytes</translation>
     </message>
     <message>
         <source>kB</source>
-        <translation>kB</translation>
+        <translation type="obsolete">kB</translation>
     </message>
     <message>
         <source>MB</source>
-        <translation>MB</translation>
+        <translation type="obsolete">MB</translation>
     </message>
     <message>
         <source>Form</source>
@@ -819,14 +924,14 @@ Do you want to reload all pages?</source>
     </message>
     <message numerus="yes">
         <source>- %n minutes remaining</source>
-        <translation>
+        <translation type="obsolete">
             <numerusform>- %n minutt gjennstår</numerusform>
             <numerusform>- %n minutter gjennstår</numerusform>
         </translation>
     </message>
     <message numerus="yes">
         <source>- %n seconds remaining</source>
-        <translation>
+        <translation type="obsolete">
             <numerusform>- %n sekund gjennstår</numerusform>
             <numerusform>- %n sekunder gjennstår</numerusform>
         </translation>
@@ -834,6 +939,10 @@ Do you want to reload all pages?</source>
     <message>
         <source>Error opening output file: %1</source>
         <translation>Feil ved skriving til fil: %1</translation>
+    </message>
+    <message>
+        <source>%1 of %2 (%3/sec) - %4</source>
+        <translation>%1 av %2 (%3/sek) - %4</translation>
     </message>
 </context>
 <context>
@@ -844,6 +953,38 @@ Do you want to reload all pages?</source>
             <numerusform>%n nedlasting</numerusform>
             <numerusform>%n nedlastinger</numerusform>
         </translation>
+    </message>
+    <message>
+        <source>There are %1 downloads in progress
+Do you want to quit anyway?</source>
+        <translation>Det er %1 aktive nedlastinger
+Er du sikker på at du vil avslutte?</translation>
+    </message>
+    <message numerus="yes">
+        <source>%n minutes remaining</source>
+        <translation>
+            <numerusform>%n minutt gjennstår</numerusform>
+            <numerusform>%n minutter gjennstår</numerusform>
+        </translation>
+    </message>
+    <message numerus="yes">
+        <source>%n seconds remaining</source>
+        <translation>
+            <numerusform>%n sekund gjennstår</numerusform>
+            <numerusform>%n sekunder gjennstår</numerusform>
+        </translation>
+    </message>
+    <message>
+        <source>bytes</source>
+        <translation>bytes</translation>
+    </message>
+    <message>
+        <source>kB</source>
+        <translation>kB</translation>
+    </message>
+    <message>
+        <source>MB</source>
+        <translation>MB</translation>
     </message>
 </context>
 <context>
@@ -912,8 +1053,8 @@ Do you want to reload all pages?</source>
     <message numerus="yes">
         <source>%n item(s)</source>
         <translation>
-            <numerusform>%1 element</numerusform>
-            <numerusform>%2 elementer</numerusform>
+            <numerusform>%n element</numerusform>
+            <numerusform>%n elementer</numerusform>
         </translation>
     </message>
 </context>
@@ -921,7 +1062,7 @@ Do you want to reload all pages?</source>
     <name>LanguageManager</name>
     <message>
         <source>Default</source>
-        <translation>Standardspråk</translation>
+        <translation type="obsolete">Standardspråk</translation>
     </message>
     <message>
         <source>Choose language</source>
@@ -929,7 +1070,11 @@ Do you want to reload all pages?</source>
     </message>
     <message>
         <source>&lt;p&gt;You can run with a different language than&lt;br&gt;the operating system default.&lt;/p&gt;&lt;p&gt;Please choose the language which should be used&lt;/p&gt;</source>
-        <translation>&lt;p&gt;Du kan bruke at annet språk enn&lt;br&gt;standardspråket til operativsystemet.&lt;/p&gt;&lt;p&gt;Velg språk&lt;/p&gt;</translation>
+        <translation>&lt;p&gt;Du kan bruke at annet språk enn&lt;br&gt;operativsystemets standardspråk.&lt;/p&gt;&lt;p&gt;Velg språk&lt;/p&gt;</translation>
+    </message>
+    <message>
+        <source>No translation files are installed.</source>
+        <translation>Ingen oversettelses filer er installert.</translation>
     </message>
 </context>
 <context>
@@ -950,7 +1095,7 @@ Do you want to reload all pages?</source>
 %2
 
 Do you want to ignore these errors?</source>
-        <translation>SSL Feil:
+        <translation type="obsolete">SSL Feil:
 
 %1
 
@@ -960,45 +1105,61 @@ Vil du ignorere disse feilene?</translation>
     </message>
     <message>
         <source>Do you want to accept all these certificates?</source>
-        <translation>Vil du akseptere alle disse sertifikatene?</translation>
+        <translation type="obsolete">Vil du akseptere alle disse sertifikatene?</translation>
+    </message>
+    <message>
+        <source> - SSL Errors</source>
+        <translation> - SSL Feil</translation>
+    </message>
+    <message>
+        <source>&lt;qt&gt;SSL Errors:&lt;br/&gt;&lt;br/&gt;for: &lt;tt&gt;%1&lt;/tt&gt;&lt;ul&gt;&lt;li&gt;%2&lt;/li&gt;&lt;/ul&gt;
+
+Do you want to ignore these errors?&lt;/qt&gt;</source>
+        <translation>&lt;qt&gt;SSL Feil:&lt;br/&gt;&lt;br/&gt;for: &lt;tt&gt;%1&lt;/tt&gt;&lt;ul&gt;&lt;li&gt;%2&lt;/li&gt;&lt;/ul&gt;
+
+Vil du ignorere disse feilene?&lt;qt&gt;</translation>
+    </message>
+    <message>
+        <source>&lt;qt&gt;Certifactes:&lt;br/&gt;%1&lt;br/&gt;Do you want to accept all these certificates?&lt;/qt&gt;</source>
+        <translation>&lt;qt&gt;Sertifikater:&lt;br/&gt;%1&lt;br/&gt;Vil du akseptere alle disse sertifikatene?&lt;/qt&gt;</translation>
     </message>
 </context>
 <context>
     <name>NetworkMonitor</name>
     <message>
         <source>Name</source>
-        <translation type="unfinished">Navn</translation>
+        <translation>Navn</translation>
     </message>
     <message>
         <source>Value</source>
-        <translation type="unfinished"></translation>
+        <translation>Verdi</translation>
     </message>
 </context>
 <context>
     <name>NetworkMonitorDialog</name>
     <message>
         <source>Network Monitor</source>
-        <translation type="unfinished"></translation>
+        <translation>Nettverksovervåker</translation>
     </message>
     <message>
         <source>Network Requests</source>
-        <translation type="unfinished"></translation>
+        <translation>Nettverksforespørselser</translation>
     </message>
     <message>
         <source>Request Headers</source>
-        <translation type="unfinished"></translation>
+        <translation>Forespørselshode</translation>
     </message>
     <message>
         <source>Response Headers</source>
-        <translation type="unfinished"></translation>
+        <translation>Svarhode</translation>
     </message>
     <message>
         <source>&amp;Remove</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Fjern</translation>
     </message>
     <message>
         <source>Remove &amp;All Requests</source>
-        <translation type="unfinished"></translation>
+        <translation>Fjern &amp;alle forespørselser</translation>
     </message>
 </context>
 <context>
@@ -1069,54 +1230,58 @@ Vil du ignorere disse feilene?</translation>
     <name>RequestModel</name>
     <message>
         <source>Redirect: %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Videresend: %1</translation>
     </message>
     <message>
         <source>Method</source>
-        <translation type="unfinished"></translation>
+        <translation>Metode</translation>
     </message>
     <message>
         <source>Address</source>
-        <translation type="unfinished">Adresse</translation>
+        <translation>Adresse</translation>
     </message>
     <message>
         <source>Response</source>
-        <translation type="unfinished"></translation>
+        <translation>Svar</translation>
     </message>
     <message>
         <source>Length</source>
-        <translation type="unfinished"></translation>
+        <translation>Lengde</translation>
     </message>
     <message>
         <source>Content Type</source>
-        <translation type="unfinished"></translation>
+        <translation>Innholdstype</translation>
     </message>
     <message>
         <source>Info</source>
-        <translation type="unfinished"></translation>
+        <translation>Info</translation>
     </message>
 </context>
 <context>
     <name>SearchBanner</name>
     <message>
-        <source>Form</source>
-        <translation>Skjema</translation>
-    </message>
-    <message>
         <source>TextLabel</source>
+        <translatorcomment>Is there a way for things like these be ommitted from translation since they are never shown in the UI? A comment would probably do, so translators don&apos;t have to figure it out :-)</translatorcomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <source>&lt;</source>
-        <translation>&lt;</translation>
+        <translatorcomment>Is there a way for things like these be ommitted from translation since they are never shown in the UI? A comment would probably do, so translators don&apos;t have to figure it out :-)</translatorcomment>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>&gt;</source>
-        <translation>&gt;</translation>
+        <translatorcomment>Is there a way for things like these be ommitted from translation since they are never shown in the UI? A comment would probably do, so translators don&apos;t have to figure it out :-)</translatorcomment>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Done</source>
         <translation>Ferdig</translation>
+    </message>
+    <message>
+        <source>Form</source>
+        <translatorcomment>Is there a way for things like these be ommitted from translation since they are never shown in the UI? A comment would probably do, so translators don&apos;t have to figure it out :-)</translatorcomment>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -1178,7 +1343,7 @@ Vil du ignorere disse feilene?</translation>
     </message>
     <message>
         <source>In a tab in the current window</source>
-        <translation>I en fane i det nåværende vinduet</translation>
+        <translation type="obsolete">I en fane i det nåværende vinduet</translation>
     </message>
     <message>
         <source>In a new window</source>
@@ -1270,7 +1435,7 @@ Vil du ignorere disse feilene?</translation>
     </message>
     <message>
         <source>Http</source>
-        <translation>Http</translation>
+        <translation type="obsolete">Http</translation>
     </message>
     <message>
         <source>Host:</source>
@@ -1388,6 +1553,43 @@ Vil du ignorere disse feilene?</translation>
         <source>Host name:</source>
         <translation>Vertsnavn:</translation>
     </message>
+    <message>
+        <source>Preferred languages for viewing webpages in:</source>
+        <translation>Foretrukkne språk for visning av nettsider:</translation>
+    </message>
+    <message>
+        <source>Block Popup Windows</source>
+        <translation>Blokker sprettoppvinduer</translation>
+    </message>
+    <message>
+        <source>Opening links</source>
+        <translation>Åpning av lenker</translation>
+    </message>
+    <message>
+        <source>Links that want to open in a new window:</source>
+        <translation>Lenker som vil åpnes i et nytt vindu:</translation>
+    </message>
+    <message>
+        <source>In a new selected tab in the current window</source>
+        <translation>I en ny, aktiv fane i det aktive vinduet</translation>
+    </message>
+    <message>
+        <source>In a new tab in the current window</source>
+        <translation>I en ny fane i det aktive vinduet</translation>
+    </message>
+    <message>
+        <source>In the current tab</source>
+        <translation>I den aktive fanen</translation>
+    </message>
+    <message>
+        <source>Http (Secure)</source>
+        <translation>Http (Sikker)</translation>
+    </message>
+    <message>
+        <source>Http (Transparent)</source>
+        <translatorcomment>I don&apos;t know the Norwegian equivalent of this word in this context.</translatorcomment>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>SourceViewer</name>
@@ -1420,7 +1622,7 @@ Vil du ignorere disse feilene?</translation>
     <name>TabBar</name>
     <message>
         <source>New &amp;Tab</source>
-        <translation>Ny &amp;fane</translation>
+        <translation type="obsolete">Ny &amp;fane</translation>
     </message>
     <message>
         <source>Duplicate Tab</source>
@@ -1444,18 +1646,18 @@ Vil du ignorere disse feilene?</translation>
     </message>
     <message>
         <source>Show Tab Bar</source>
-        <translation>Vis fanelinje</translation>
+        <translation>Vis fanelinjen</translation>
     </message>
     <message>
         <source>Hide Tab Bar</source>
-        <translation>Skjul fanelinje</translation>
+        <translation>Skjul fanelinjen</translation>
     </message>
 </context>
 <context>
     <name>TabWidget</name>
     <message>
         <source>New &amp;Tab</source>
-        <translation>Ny &amp;fane</translation>
+        <translation>N&amp;y fane</translation>
     </message>
     <message>
         <source>&amp;Close Tab</source>
@@ -1495,11 +1697,35 @@ Vil du virkelig lukke denne siden?
     </message>
     <message>
         <source>Ctrl-]</source>
-        <translation type="unfinished"></translation>
+        <translation>Ctrl-]</translation>
     </message>
     <message>
         <source>Ctrl-[</source>
-        <translation type="unfinished"></translation>
+        <translation>Ctrl-[</translation>
+    </message>
+    <message>
+        <source>Saved Tabs</source>
+        <translation>Lagrede faner</translation>
+    </message>
+    <message>
+        <source>Loading...</source>
+        <translation>Laster...</translation>
+    </message>
+    <message>
+        <source>Loading %1% (%2 %3)...</source>
+        <translation>Laster %1% (%2 %3)...</translation>
+    </message>
+    <message>
+        <source>Finished loading</source>
+        <translation>Lastet ferdig</translation>
+    </message>
+    <message>
+        <source>Failed to load</source>
+        <translation>Lasting misslyktes</translation>
+    </message>
+    <message>
+        <source>Bookmark All Tabs</source>
+        <translation>Arkiver alle faner som bokmerker</translation>
     </message>
 </context>
 <context>
@@ -1518,7 +1744,11 @@ Vil du virkelig lukke denne siden?
     </message>
     <message>
         <source>Clear Recent Searches</source>
-        <translation>Slett nylige søk</translation>
+        <translation type="obsolete">Slett nylige søk</translation>
+    </message>
+    <message>
+        <source>Suggestions</source>
+        <translation>Forslag</translation>
     </message>
 </context>
 <context>
@@ -1537,7 +1767,7 @@ Vil du virkelig lukke denne siden?
     </message>
     <message>
         <source>If the address is correct, try to check the network connection.</source>
-        <translation>Hvis adressen er riktig, undersøk nettilkolingen.</translation>
+        <translation type="obsolete">Hvis adressen er riktig, undersøk nettilkolingen.</translation>
     </message>
     <message>
         <source>If your computer or network is protected by a firewall or proxy, make sure that the browser is permitted to access the network.</source>
@@ -1545,7 +1775,11 @@ Vil du virkelig lukke denne siden?
     </message>
     <message>
         <source>Check the address for errors such as &lt;b&gt;ww&lt;/b&gt;.arora-browser.org instead of &lt;b&gt;www&lt;/b&gt;.arora-browser.org</source>
-        <translation type="unfinished"></translation>
+        <translation>Sjekk adresselinjen for feil som &lt;b&gt;ww&lt;/b&gt;.arora-browser.org isteden for &lt;b&gt;www&lt;/b&gt;.arora-browser.org</translation>
+    </message>
+    <message>
+        <source>If the address is correct, try checking the network connection.</source>
+        <translation>Hvis adressen er riktig undersøk nettilkoblingen.</translation>
     </message>
 </context>
 <context>

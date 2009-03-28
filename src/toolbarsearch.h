@@ -65,14 +65,11 @@
 
 #include "searchlineedit.h"
 
-QT_BEGIN_NAMESPACE
-class QUrl;
-class QAction;
-class QStringListModel;
-QT_END_NAMESPACE
-
 class AutoSaver;
-
+class GoogleSuggest;
+class QStandardItem;
+class QStandardItemModel;
+class QUrl;
 class ToolbarSearch : public SearchLineEdit
 {
     Q_OBJECT
@@ -90,15 +87,24 @@ public slots:
 
 private slots:
     void save();
-    void aboutToShowMenu();
-    void triggeredMenuAction(QAction *action);
+    void textChanged(const QString &);
+    void newSuggestions(const QStringList &suggestions);
+
+protected:
+    void changeEvent(QEvent *event);
 
 private:
     void load();
+    void setupMenu();
+    void retranslate();
 
     AutoSaver *m_autosaver;
     int m_maxSavedSearches;
-    QStringListModel *m_stringListModel;
+    QStringList m_recentSearches;
+    QStringList m_suggestions;
+    GoogleSuggest *m_googleSuggest;
+    QStandardItemModel *m_model;
+    QStandardItem *m_suggestionsItem;
 };
 
 #endif // TOOLBARSEARCH_H

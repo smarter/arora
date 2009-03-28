@@ -17,20 +17,16 @@
  * Boston, MA  02110-1301  USA
  */
 
-#include <QtGui/QtGui>
-#include "squeezelabel.h"
+#include "downloadmanager.h"
 
 int main(int argc, char **argv)
 {
     QApplication application(argc, argv);
 
-    SqueezeLabel label;
-    if (application.arguments().count() > 1)
-        label.setText(application.arguments().value(1));
-    else
-        label.setText("This is one long sentence that I will have to ponder the meaning of");
-    label.show();
-    label.resize(100, label.height());
+    DownloadManager manager;
+    QUrl url("http://10.0.0.3/~ben/distccKNOPPIX-1.3-2004-08-20-gcc-3.3.iso");
+    manager.download(url);
+    manager.show();
 
     return application.exec();
 }

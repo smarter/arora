@@ -42,6 +42,33 @@ p, li { white-space: pre-wrap; }
     </message>
 </context>
 <context>
+    <name>AcceptLanguage</name>
+    <message>
+        <source>Languages</source>
+        <translation>言語</translation>
+    </message>
+    <message>
+        <source>Languages: in order of preference:</source>
+        <translation>言語の優先順位:</translation>
+    </message>
+    <message>
+        <source>Move &amp;Up</source>
+        <translation>上へ(&amp;U)</translation>
+    </message>
+    <message>
+        <source>Move &amp;Down</source>
+        <translation>下へ(&amp;D)</translation>
+    </message>
+    <message>
+        <source>&amp;Remove</source>
+        <translation>削除(&amp;R)</translation>
+    </message>
+    <message>
+        <source>Add...</source>
+        <translation>追加...</translation>
+    </message>
+</context>
+<context>
     <name>AddBookmarkDialog</name>
     <message>
         <source>Add Bookmark</source>
@@ -50,6 +77,18 @@ p, li { white-space: pre-wrap; }
     <message>
         <source>Type a name for the bookmark, and choose where to keep it.</source>
         <translation>ブックマーク名を入力して、保存先を選択してください.</translation>
+    </message>
+    <message>
+        <source>Url</source>
+        <translation>URL</translation>
+    </message>
+    <message>
+        <source>Title</source>
+        <translation>名前</translation>
+    </message>
+    <message>
+        <source>Add Folder</source>
+        <translation>フォルダの追加</translation>
     </message>
 </context>
 <context>
@@ -159,6 +198,23 @@ p, li { white-space: pre-wrap; }
         <source>Bookmarks Menu</source>
         <translation>ブックマーク メニュー</translation>
     </message>
+    <message>
+        <source>XBEL (*.xbel *.xml *.html)</source>
+        <translation>XBEL (*.xbel *.xml *.html)</translation>
+    </message>
+    <message>
+        <source>Error when loading html bookmarks: %1
+</source>
+        <translation>HTML形式ブックマークの読み込み中にエラー: %1
+</translation>
+    </message>
+</context>
+<context>
+    <name>BookmarksMenu</name>
+    <message>
+        <source>Open in Tabs</source>
+        <translation>タブで開く</translation>
+    </message>
 </context>
 <context>
     <name>BookmarksModel</name>
@@ -192,6 +248,10 @@ p, li { white-space: pre-wrap; }
     <message>
         <source>Add Bookmark...</source>
         <translation>ブックマークに追加...</translation>
+    </message>
+    <message>
+        <source>Add Folder...</source>
+        <translation>フォルダの追加...</translation>
     </message>
 </context>
 <context>
@@ -335,15 +395,15 @@ Do you want to quit anyway?</source>
     </message>
     <message>
         <source>Make Text &amp;Bigger</source>
-        <translation>文字を大きくする(&amp;B)</translation>
+        <translation type="obsolete">文字を大きくする(&amp;B)</translation>
     </message>
     <message>
         <source>Make Text &amp;Normal</source>
-        <translation>文字を通常サイズにする(&amp;N)</translation>
+        <translation type="obsolete">文字を通常サイズにする(&amp;N)</translation>
     </message>
     <message>
         <source>Make Text &amp;Smaller</source>
-        <translation>文字を小さくする(&amp;S)</translation>
+        <translation type="obsolete">文字を小さくする(&amp;S)</translation>
     </message>
     <message>
         <source>Page S&amp;ource</source>
@@ -383,7 +443,7 @@ Do you want to quit anyway?</source>
     </message>
     <message>
         <source>Manage Bookmarks...</source>
-        <translation>ブックマークの管理...</translation>
+        <translation type="obsolete">ブックマークの管理...</translation>
     </message>
     <message>
         <source>Add Bookmark...</source>
@@ -433,7 +493,7 @@ Do you want to quit anyway?</source>
     </message>
     <message>
         <source>About &amp;Arora</source>
-        <translation>Arora について(&amp;A)</translation>
+        <translation type="obsolete">Arora について(&amp;A)</translation>
     </message>
     <message>
         <source>Navigation</source>
@@ -465,7 +525,7 @@ Do you want to quit anyway?</source>
     </message>
     <message>
         <source>Arora</source>
-        <translation>Arora</translation>
+        <translation type="obsolete">Arora</translation>
     </message>
     <message>
         <source>%1 - Arora</source>
@@ -517,15 +577,57 @@ Do you want to reload all pages?</source>
     <message>
         <source>Alt+Ctrl+L</source>
         <comment>Download Manager</comment>
-        <translation>Alt+Ctrl+L</translation>
+        <translation type="obsolete">Alt+Ctrl+L</translation>
     </message>
     <message>
         <source>&lt;b&gt;%1&lt;/b&gt;&lt;br&gt;&lt;br&gt;When private browsing is turned on, some actions concerning your privacy will be disabled:&lt;ul&gt;&lt;li&gt; Webpages are not added to the history.&lt;/li&gt;&lt;li&gt; Items are automatically removed from the Downloads window.&lt;/li&gt;&lt;li&gt; New cookies are not stored, current cookies can&apos;t be accessed.&lt;/li&gt;&lt;li&gt; Site icons won&apos;t be stored, session won&apos;t be saved.&lt;/li&gt;&lt;li&gt; Searches are not addded to the pop-up menu in the search box.&lt;/li&gt;&lt;/ul&gt;Until you close the window, you can still click the Back and Forward buttons to return to the webpages you have opened.</source>
-        <translation>&lt;b&gt;%1&lt;/b&gt;&lt;br&gt;&lt;br&gt;プライベート モードに移行した場合、あなたのプライバシーを守る為、いくつかの機能は制限されます:&lt;ul&gt;&lt;li&gt; 表示したページは履歴に追加されません。&lt;/li&gt;&lt;li&gt; ダウンロード履歴は残りません。&lt;/li&gt;&lt;li&gt; 新しく受け取った Cookie は保存されません。既に保存済みの Cookie を参照する事もできません。&lt;/li&gt;&lt;li&gt; Web サイトのアイコンやセッションは保存されません。&lt;/li&gt;&lt;li&gt; 検索ボックスの検索履歴に追加されません。&lt;/li&gt;&lt;/ul&gt;ウィンドウを閉じるまで閲覧した Web ページに戻る/進むボタンで戻る事ができます。</translation>
+        <translation type="obsolete">&lt;b&gt;%1&lt;/b&gt;&lt;br&gt;&lt;br&gt;プライベート モードに移行した場合、あなたのプライバシーを守る為、いくつかの機能は制限されます:&lt;ul&gt;&lt;li&gt; 表示したページは履歴に追加されません。&lt;/li&gt;&lt;li&gt; ダウンロード履歴は残りません。&lt;/li&gt;&lt;li&gt; 新しく受け取った Cookie は保存されません。既に保存済みの Cookie を参照する事もできません。&lt;/li&gt;&lt;li&gt; Web サイトのアイコンやセッションは保存されません。&lt;/li&gt;&lt;li&gt; 検索ボックスの検索履歴に追加されません。&lt;/li&gt;&lt;/ul&gt;ウィンドウを閉じるまで閲覧した Web ページに戻る/進むボタンで戻る事ができます。</translation>
     </message>
     <message>
         <source>Show &amp;Network Monitor</source>
         <translation>ネットワーク モニタを表示(&amp;N)</translation>
+    </message>
+    <message>
+        <source>Close Window</source>
+        <translation>ウィンドウを閉じる</translation>
+    </message>
+    <message>
+        <source>Zoom &amp;In</source>
+        <translation>拡大(&amp;I)</translation>
+    </message>
+    <message>
+        <source>Zoom &amp;Normal</source>
+        <translation>通常サイズに戻す(&amp;N)</translation>
+    </message>
+    <message>
+        <source>Zoom &amp;Out</source>
+        <translation>縮小(&amp;O)</translation>
+    </message>
+    <message>
+        <source>Zoom &amp;Text Only</source>
+        <translation>文字さイズだけ変更(&amp;T)</translation>
+    </message>
+    <message>
+        <source>Show All Bookmarks...</source>
+        <translation>ブックマークの管理...</translation>
+    </message>
+    <message>
+        <source>Add Folder...</source>
+        <translation>フォルダの追加...</translation>
+    </message>
+    <message>
+        <source>About &amp;%1</source>
+        <comment>About Browser</comment>
+        <translation>&amp;%1 について</translation>
+    </message>
+    <message>
+        <source>&lt;b&gt;%1&lt;/b&gt;&lt;br&gt;&lt;br&gt;When private browsing is turned on, some actions concerning your privacy will be disabled:&lt;ul&gt;&lt;li&gt; Webpages are not added to the history.&lt;/li&gt;&lt;li&gt; Items are automatically removed from the Downloads window.&lt;/li&gt;&lt;li&gt; New cookies are not stored, current cookies can&apos;t be accessed.&lt;/li&gt;&lt;li&gt; Site icons won&apos;t be stored, session won&apos;t be saved.&lt;/li&gt;&lt;li&gt; Searches are not added to the pop-up menu in the search box.&lt;/li&gt;&lt;/ul&gt;Until you close the window, you can still click the Back and Forward buttons to return to the webpages you have opened.</source>
+        <translation>&lt;b&gt;%1&lt;/b&gt;&lt;br&gt;&lt;br&gt;プライベート モードに移行した場合、あなたのプライバシーを守る為、いくつかの機能は制限されます:&lt;ul&gt;&lt;li&gt; 表示したページは履歴に追加されません。&lt;/li&gt;&lt;li&gt; ダウンロード履歴は残りません。&lt;/li&gt;&lt;li&gt; 新しく受け取った Cookie は保存されません。既に保存済みの Cookie を参照する事もできません。&lt;/li&gt;&lt;li&gt; Web サイトのアイコンやセッションは保存されません。&lt;/li&gt;&lt;li&gt; 検索ボックスの検索履歴に追加されません。&lt;/li&gt;&lt;/ul&gt;ウィンドウを閉じるまでに閲覧した Web ページには戻る/進むボタンで移動する事ができます。</translation>
+    </message>
+    <message>
+        <source>Ctrl+Y</source>
+        <comment>Download Manager</comment>
+        <translation>Ctrl+Y</translation>
     </message>
 </context>
 <context>
@@ -757,23 +859,23 @@ Do you want to reload all pages?</source>
     </message>
     <message>
         <source>seconds</source>
-        <translation>秒</translation>
+        <translation type="obsolete">秒</translation>
     </message>
     <message numerus="yes">
         <source>- %n minutes remaining</source>
-        <translation>
+        <translation type="obsolete">
             <numerusform>- 残り %n 分</numerusform>
         </translation>
     </message>
     <message numerus="yes">
         <source>- %n seconds remaining</source>
-        <translation>
+        <translation type="obsolete">
             <numerusform>- 残り %n 秒</numerusform>
         </translation>
     </message>
     <message>
         <source>%1 of %2 (%3/sec) %4</source>
-        <translation>%1 / %2 (%3/sec) %4</translation>
+        <translation type="obsolete">%1 / %2 (%3/sec) %4</translation>
     </message>
     <message>
         <source>?</source>
@@ -782,6 +884,49 @@ Do you want to reload all pages?</source>
     <message>
         <source>%1 of %2 - Stopped</source>
         <translation>%1 / %2 - 停止しました</translation>
+    </message>
+    <message>
+        <source>bytes</source>
+        <translation type="obsolete">bytes</translation>
+    </message>
+    <message>
+        <source>kB</source>
+        <translation type="obsolete">kB</translation>
+    </message>
+    <message>
+        <source>MB</source>
+        <translation type="obsolete">MB</translation>
+    </message>
+    <message>
+        <source>%1 of %2 (%3/sec) - %4</source>
+        <translation>%1 / %2 (%3/秒) - %4</translation>
+    </message>
+</context>
+<context>
+    <name>DownloadManager</name>
+    <message numerus="yes">
+        <source>%n Download(s)</source>
+        <translation>
+            <numerusform>%n 件のダウンロード アイテム</numerusform>
+        </translation>
+    </message>
+    <message>
+        <source>There are %1 downloads in progress
+Do you want to quit anyway?</source>
+        <translation>%1 件の項目がダウンロード中です
+本当に終了しますか?</translation>
+    </message>
+    <message numerus="yes">
+        <source>%n minutes remaining</source>
+        <translation>
+            <numerusform>残り %n 分</numerusform>
+        </translation>
+    </message>
+    <message numerus="yes">
+        <source>%n seconds remaining</source>
+        <translation>
+            <numerusform>残り %n 秒</numerusform>
+        </translation>
     </message>
     <message>
         <source>bytes</source>
@@ -794,15 +939,6 @@ Do you want to reload all pages?</source>
     <message>
         <source>MB</source>
         <translation>MB</translation>
-    </message>
-</context>
-<context>
-    <name>DownloadManager</name>
-    <message numerus="yes">
-        <source>%n Download(s)</source>
-        <translation>
-            <numerusform>%n 件のダウンロード アイテム</numerusform>
-        </translation>
     </message>
 </context>
 <context>
@@ -879,7 +1015,7 @@ Do you want to reload all pages?</source>
     <name>LanguageManager</name>
     <message>
         <source>Default</source>
-        <translation>デフォルト</translation>
+        <translation type="obsolete">デフォルト</translation>
     </message>
     <message>
         <source>Choose language</source>
@@ -888,6 +1024,10 @@ Do you want to reload all pages?</source>
     <message>
         <source>&lt;p&gt;You can run with a different language than&lt;br&gt;the operating system default.&lt;/p&gt;&lt;p&gt;Please choose the language which should be used&lt;/p&gt;</source>
         <translation>&lt;p&gt;OSのデフォルト設定とは異なる言語で動作させる事ができます.&lt;/p&gt;&lt;p&gt;使用したい言語を選択して下さい&lt;/p&gt;</translation>
+    </message>
+    <message>
+        <source>No translation files are installed.</source>
+        <translation>翻訳ファイルがインストールされていません。</translation>
     </message>
 </context>
 <context>
@@ -900,7 +1040,7 @@ Do you want to reload all pages?</source>
 %2
 
 Do you want to ignore these errors?</source>
-        <translation>SSL エラー:
+        <translation type="obsolete">SSL エラー:
 
 %1
 
@@ -910,7 +1050,7 @@ Do you want to ignore these errors?</source>
     </message>
     <message>
         <source>Do you want to accept all these certificates?</source>
-        <translation>全ての証明書を受け入れますか?</translation>
+        <translation type="obsolete">全ての証明書を受け入れますか?</translation>
     </message>
     <message>
         <source>&lt;qt&gt;Enter username and password for &quot;%1&quot; at %2&lt;/qt&gt;</source>
@@ -919,6 +1059,22 @@ Do you want to ignore these errors?</source>
     <message>
         <source>&lt;qt&gt;Connect to proxy &quot;%1&quot; using:&lt;/qt&gt;</source>
         <translation>&lt;qt&gt;プロキシ サーバ &quot;%1&quot; に接続:&lt;/qt&gt;</translation>
+    </message>
+    <message>
+        <source> - SSL Errors</source>
+        <translation> - SSL エラー</translation>
+    </message>
+    <message>
+        <source>&lt;qt&gt;SSL Errors:&lt;br/&gt;&lt;br/&gt;for: &lt;tt&gt;%1&lt;/tt&gt;&lt;ul&gt;&lt;li&gt;%2&lt;/li&gt;&lt;/ul&gt;
+
+Do you want to ignore these errors?&lt;/qt&gt;</source>
+        <translation>&lt;qt&gt;SSL エラー:&lt;br/&gt;&lt;br/&gt;URL: &lt;tt&gt;%1&lt;/tt&gt;&lt;ul&gt;&lt;li&gt;%2&lt;/li&gt;&lt;/ul&gt;
+
+エラーを無視しますか?&lt;/qt&gt;</translation>
+    </message>
+    <message>
+        <source>&lt;qt&gt;Certifactes:&lt;br/&gt;%1&lt;br/&gt;Do you want to accept all these certificates?&lt;/qt&gt;</source>
+        <translation>&lt;qt&gt;証明書:&lt;br/&gt;%1&lt;br/&gt;全ての証明書を受け入れますか?&lt;/qt&gt;</translation>
     </message>
 </context>
 <context>
@@ -1156,7 +1312,7 @@ Do you want to ignore these errors?</source>
     </message>
     <message>
         <source>In a tab in the current window</source>
-        <translation>表示しているタブで開く</translation>
+        <translation type="obsolete">表示しているタブで開く</translation>
     </message>
     <message>
         <source>In a new window</source>
@@ -1272,7 +1428,7 @@ Do you want to ignore these errors?</source>
     </message>
     <message>
         <source>Http</source>
-        <translation>Http</translation>
+        <translation type="obsolete">Http</translation>
     </message>
     <message>
         <source>Host name:</source>
@@ -1322,6 +1478,42 @@ Do you want to ignore these errors?</source>
         <source>Show only one close button instead of one for each tab</source>
         <translation>タブ毎の閉じるボタンをつけない</translation>
     </message>
+    <message>
+        <source>Preferred languages for viewing webpages in:</source>
+        <translation>Web ページを表示する際に使用する言語の設定:</translation>
+    </message>
+    <message>
+        <source>Block Popup Windows</source>
+        <translation>ポップアップウィンドウをブロックする</translation>
+    </message>
+    <message>
+        <source>Opening links</source>
+        <translation>リンクを開く</translation>
+    </message>
+    <message>
+        <source>Links that want to open in a new window:</source>
+        <translation>リンクを新しいウィンドウで開こうとした時の動作:</translation>
+    </message>
+    <message>
+        <source>In a new selected tab in the current window</source>
+        <translation>現在のウィンドウの新しい選択済みのタブで開く</translation>
+    </message>
+    <message>
+        <source>In a new tab in the current window</source>
+        <translation>現在のウィンドウの新しいタブで開く</translation>
+    </message>
+    <message>
+        <source>In the current tab</source>
+        <translation>現在のタブで開く</translation>
+    </message>
+    <message>
+        <source>Http (Secure)</source>
+        <translation>Http (安全な)</translation>
+    </message>
+    <message>
+        <source>Http (Transparent)</source>
+        <translation>Http (透過)</translation>
+    </message>
 </context>
 <context>
     <name>SourceViewer</name>
@@ -1362,7 +1554,7 @@ Do you want to ignore these errors?</source>
     </message>
     <message>
         <source>New &amp;Tab</source>
-        <translation>新しいタブ(&amp;T)</translation>
+        <translation type="obsolete">新しいタブ(&amp;T)</translation>
     </message>
     <message>
         <source>Duplicate Tab</source>
@@ -1430,6 +1622,30 @@ Do you really want to close this page?
         <source>Ctrl-[</source>
         <translation>Ctrl-[</translation>
     </message>
+    <message>
+        <source>Saved Tabs</source>
+        <translation>タブを保存</translation>
+    </message>
+    <message>
+        <source>Loading...</source>
+        <translation>読み込み中...</translation>
+    </message>
+    <message>
+        <source>Loading %1% (%2 %3)...</source>
+        <translation>読み込み中 %1% (%2 %3)...</translation>
+    </message>
+    <message>
+        <source>Finished loading</source>
+        <translation>読み込み完了</translation>
+    </message>
+    <message>
+        <source>Failed to load</source>
+        <translation>読み込み失敗</translation>
+    </message>
+    <message>
+        <source>Bookmark All Tabs</source>
+        <translation>全てのタブをブックマーク</translation>
+    </message>
 </context>
 <context>
     <name>ToolbarSearch</name>
@@ -1443,7 +1659,11 @@ Do you really want to close this page?
     </message>
     <message>
         <source>Clear Recent Searches</source>
-        <translation>検索履歴の消去</translation>
+        <translation type="obsolete">検索履歴の消去</translation>
+    </message>
+    <message>
+        <source>Suggestions</source>
+        <translation>候補</translation>
     </message>
 </context>
 <context>
@@ -1462,11 +1682,15 @@ Do you really want to close this page?
     </message>
     <message>
         <source>If the address is correct, try to check the network connection.</source>
-        <translation>URLが正しい場合は、ネットワークの接続状況を確認してみてください。</translation>
+        <translation type="obsolete">URLが正しい場合は、ネットワークの接続状況を確認してみてください。</translation>
     </message>
     <message>
         <source>If your computer or network is protected by a firewall or proxy, make sure that the browser is permitted to access the network.</source>
         <translation>あなたのコンピュータやネットワークがファイアウォールやプロキシによって保護されている場合、Arora ブラウザにネットワークへのアクセスを許可してください。</translation>
+    </message>
+    <message>
+        <source>If the address is correct, try checking the network connection.</source>
+        <translation>URLが正しい場合は、ネットワークの接続状況を確認してみてください。</translation>
     </message>
 </context>
 <context>

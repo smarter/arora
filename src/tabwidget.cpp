@@ -169,7 +169,7 @@ TabWidget::TabWidget(QWidget *parent)
     m_recentlyClosedTabsAction->setMenu(m_recentlyClosedTabsMenu);
     m_recentlyClosedTabsAction->setEnabled(false);
 
-#if QT_VERSION < 0x040500
+#ifndef Q_WS_MAC // can't seem to figure out the background color :(
     QToolButton *addTabButton = new QToolButton(this);
     addTabButton->setDefaultAction(m_newTabAction);
     addTabButton->setAutoRaise(true);
@@ -598,6 +598,8 @@ void TabWidget::lineEditReturnPressed()
 void TabWidget::windowCloseRequested()
 {
     WebPage *webPage = qobject_cast<WebPage*>(sender());
+    if (!webPage)
+        return;
     WebView *webView = qobject_cast<WebView*>(webPage->view());
     int index = webViewIndex(webView);
     if (index >= 0) {
@@ -693,6 +695,7 @@ QLabel *TabWidget::animationLabel(int index, bool addMovie)
     }
     if (addMovie && !loadingAnimation->movie()) {
         QMovie *movie = new QMovie(QLatin1String(":loading.gif"), QByteArray(), loadingAnimation);
+        movie->setSpeed(50);
         loadingAnimation->setMovie(movie);
         movie->start();
     }
@@ -728,7 +731,8 @@ void TabWidget::webViewLoadProgress(int progress)
     WebView *webView = qobject_cast<WebView*>(sender());
     int index = webViewIndex(webView);
 
-    if (index != currentIndex())
+    if (index != currentIndex()
+        || index < 0)
         return;
 
     double totalBytes = (double) webView->webPage()->totalBytes() / 1024;
@@ -790,13 +794,13 @@ void TabWidget::webViewTitleChanged(const QString &title)
 {
     WebView *webView = qobject_cast<WebView*>(sender());
     int index = webViewIndex(webView);
-    if (-1 != index) {
-        QString tabTitle = title;
-        if (title.isEmpty())
-            tabTitle = QString::fromUtf8(webView->url().toEncoded());
-        tabTitle.replace(QLatin1Char('&'), QLatin1String("&&"));
-        setTabText(index, tabTitle);
-    }
+    if (-1 == index)
+        return;
+    QString tabTitle = title;
+    if (title.isEmpty())
+        tabTitle = QString::fromUtf8(webView->url().toEncoded());
+    tabTitle.replace(QLatin1Char('&'), QLatin1String("&&"));
+    setTabText(index, tabTitle);
     if (currentIndex() == index)
         emit setCurrentTitle(title);
     BrowserApplication::historyManager()->updateHistoryEntry(webView->url(), title);
@@ -806,9 +810,9 @@ void TabWidget::webViewUrlChanged(const QUrl &url)
 {
     WebView *webView = qobject_cast<WebView*>(sender());
     int index = webViewIndex(webView);
-    if (-1 != index) {
-        m_tabBar->setTabData(index, url);
-    }
+    if (-1 == index)
+        return;
+    m_tabBar->setTabData(index, url);
     emit tabsChanged();
 }
 

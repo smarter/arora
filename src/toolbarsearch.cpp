@@ -61,15 +61,18 @@
 ****************************************************************************/
 
 #include "toolbarsearch.h"
-#include "autosaver.h"
 
+#include "autosaver.h"
+#include "browserapplication.h"
+#include "googlesuggest.h"
+#include "networkaccessmanager.h"
+
+#include <qabstractitemview.h>
 #include <qcompleter.h>
 #include <qcoreapplication.h>
-#include <qmenu.h>
 #include <qsettings.h>
-#include <qstringlistmodel.h>
+#include <qstandarditemmodel.h>
 #include <qurl.h>
-
 #include <qwebsettings.h>
 
 /*
@@ -77,21 +80,20 @@
     Searches are turned into urls that use Google to perform search
  */
 ToolbarSearch::ToolbarSearch(QWidget *parent)
-    : SearchLineEdit(parent)
+    : SearchLineEdit(new QCompleter(parent), parent)
     , m_autosaver(new AutoSaver(this))
     , m_maxSavedSearches(10)
-    , m_stringListModel(new QStringListModel(this))
+    , m_model(new QStandardItemModel(this))
+    , m_suggestionsItem(0)
 {
-    QMenu *m = menu();
-    connect(m, SIGNAL(aboutToShow()), this, SLOT(aboutToShowMenu()));
-    connect(m, SIGNAL(triggered(QAction*)), this, SLOT(triggeredMenuAction(QAction*)));
-
-    QCompleter *completer = new QCompleter(m_stringListModel, this);
-    completer->setCompletionMode(QCompleter::InlineCompletion);
-    setCompleter(completer);
+    completer()->setModel(m_model);
+    completer()->setCompletionMode(QCompleter::UnfilteredPopupCompletion);
+    connect(completer(), SIGNAL(activated(const QString &)),
+            this, SLOT(searchNow()));
 
     connect(this, SIGNAL(returnPressed()), SLOT(searchNow()));
     setInactiveText(QLatin1String("Google"));
+
     load();
 }
 
@@ -104,7 +106,7 @@ void ToolbarSearch::save()
 {
     QSettings settings;
     settings.beginGroup(QLatin1String("toolbarsearch"));
-    settings.setValue(QLatin1String("recentSearches"), m_stringListModel->stringList());
+    settings.setValue(QLatin1String("recentSearches"), m_recentSearches);
     settings.setValue(QLatin1String("maximumSaved"), m_maxSavedSearches);
     settings.endGroup();
 }
@@ -113,16 +115,33 @@ void ToolbarSearch::load()
 {
     QSettings settings;
     settings.beginGroup(QLatin1String("toolbarsearch"));
-    QStringList list = settings.value(QLatin1String("recentSearches")).toStringList();
+    m_recentSearches = settings.value(QLatin1String("recentSearches")).toStringList();
     m_maxSavedSearches = settings.value(QLatin1String("maximumSaved"), m_maxSavedSearches).toInt();
-    m_stringListModel->setStringList(list);
+    bool useGoogleSuggest = settings.value(QLatin1String("useGoogleSuggest"), true).toBool();
+    if (useGoogleSuggest) {
+        m_googleSuggest = new GoogleSuggest(this);
+        connect(m_googleSuggest, SIGNAL(suggestions(const QStringList &, const QString &)),
+                this, SLOT(newSuggestions(const QStringList &)));
+        connect(this, SIGNAL(textChanged(const QString &)),
+                this, SLOT(textChanged(const QString &)));
+    }
     settings.endGroup();
+    setupMenu();
+}
+
+void ToolbarSearch::textChanged(const QString &text)
+{
+    // delay settings this to prevent BrowserApplication from creating
+    // the object when it isn't needed on startup
+    if (!m_googleSuggest->networkAccessManager())
+        m_googleSuggest->setNetworkAccessManager(BrowserApplication::networkAccessManager());
+    m_googleSuggest->suggest(text);
 }
 
 void ToolbarSearch::searchNow()
 {
     QString searchText = text();
-    QStringList newList = m_stringListModel->stringList();
+    QStringList newList = m_recentSearches;
     if (newList.contains(searchText))
         newList.removeAt(newList.indexOf(searchText));
     newList.prepend(searchText);
@@ -131,7 +150,7 @@ void ToolbarSearch::searchNow()
 
     QWebSettings *globalSettings = QWebSettings::globalSettings();
     if (!globalSettings->testAttribute(QWebSettings::PrivateBrowsingEnabled)) {
-        m_stringListModel->setStringList(newList);
+        m_recentSearches = newList;
         m_autosaver->changeOccurred();
     }
 
@@ -144,41 +163,74 @@ void ToolbarSearch::searchNow()
     emit search(url);
 }
 
-void ToolbarSearch::aboutToShowMenu()
+void ToolbarSearch::newSuggestions(const QStringList &suggestions)
 {
-    selectAll();
-    QMenu *m = menu();
-    m->clear();
-    QStringList list = m_stringListModel->stringList();
-    if (list.isEmpty()) {
-        m->addAction(tr("No Recent Searches"));
-        return;
-    }
-
-    QAction *recent = m->addAction(tr("Recent Searches"));
-    recent->setEnabled(false);
-    for (int i = 0; i < list.count(); ++i) {
-        QString text = list.at(i);
-        m->addAction(text)->setData(text);
-    }
-    m->addSeparator();
-    m->addAction(tr("Clear Recent Searches"), this, SLOT(clear()));
+    m_suggestions = suggestions;
+    setupMenu();
 }
 
-void ToolbarSearch::triggeredMenuAction(QAction *action)
+void ToolbarSearch::changeEvent(QEvent *event)
 {
-    QVariant v = action->data();
-    if (v.canConvert<QString>()) {
-        QString text = v.toString();
-        setText(text);
-        searchNow();
+    if (event->type() == QEvent::LanguageChange)
+        retranslate();
+    SearchLineEdit::changeEvent(event);
+}
+
+void ToolbarSearch::retranslate()
+{
+    if (m_suggestionsItem)
+        m_suggestionsItem->setText(tr("Suggestions"));
+}
+
+void ToolbarSearch::setupMenu()
+{
+    if (m_suggestions.isEmpty()
+        || (m_model->rowCount() > 0
+            && m_model->item(0) != m_suggestionsItem)) {
+        m_model->clear();
+        m_suggestionsItem = 0;
+    } else {
+        m_model->removeRows(1, m_model->rowCount() -1 );
     }
+
+    if (!m_suggestions.isEmpty()) {
+        if (m_model->rowCount() == 0) {
+            if (!m_suggestionsItem) {
+                m_suggestionsItem = new QStandardItem();
+                m_suggestionsItem->setEnabled(false);
+                retranslate();
+            }
+            m_model->appendRow(m_suggestionsItem);
+        }
+        for (int i = 0; i < m_suggestions.count(); ++i) {
+            const QString &text = m_suggestions.at(i);
+            m_model->appendRow(new QStandardItem(text));
+        }
+    }
+
+    if (m_recentSearches.isEmpty()) {
+        QStandardItem *item = new QStandardItem(tr("No Recent Searches"));
+        item->setEnabled(false);
+        m_model->appendRow(item);
+    } else {
+        QStandardItem *recentSearchesItem = new QStandardItem(tr("Recent Searches"));
+        recentSearchesItem->setEnabled(false);
+        m_model->appendRow(recentSearchesItem);
+        for (int i = 0; i < m_recentSearches.count(); ++i) {
+            QString text = m_recentSearches.at(i);
+            m_model->appendRow(new QStandardItem(text));
+        }
+    }
+
+    QAbstractItemView *view = completer()->popup();
+    view->setFixedHeight(view->sizeHintForRow(0) * m_model->rowCount() + view->frameWidth() * 2);
 }
 
 void ToolbarSearch::clear()
 {
-    m_stringListModel->setStringList(QStringList());
+    m_recentSearches.clear();
     m_autosaver->changeOccurred();
+    setupMenu();
     QLineEdit::clear();
     clearFocus();
 }

@@ -26,23 +26,34 @@
  * SUCH DAMAGE.
  */
 
-#ifndef SEARCHLINEEDIT_H
-#define SEARCHLINEEDIT_H
+#ifndef GOOGLESUGGEST_H
+#define GOOGLESUGGEST_H
 
-#include "lineedit.h"
+#include <qobject.h>
 
-class SearchLineEdit : public LineEdit
+class QNetworkAccessManager;
+class GoogleSuggest : public QObject
 {
     Q_OBJECT
 
+signals:
+    void suggestions(const QStringList &suggestions, const QString &searchText);
+    void error(const QString &error);
+
 public:
-    SearchLineEdit(QWidget *parent = 0);
-    SearchLineEdit(QCompleter *completer, QWidget *parent = 0);
+    GoogleSuggest(QObject *parent = 0);
+    void setNetworkAccessManager(QNetworkAccessManager *manager);
+    QNetworkAccessManager *networkAccessManager() const;
+
+public slots:
+    void suggest(const QString &searchText);
+
+private slots:
+    void finished();
 
 private:
-    void init();
-
+    QNetworkAccessManager *m_networkAccessManager;
 };
 
-#endif // SEARCHLINEEDIT_H
+#endif // GOOGLESUGGEST_H
 

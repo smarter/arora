@@ -7,10 +7,10 @@ win32 : Debug : CONFIG += console
 INCLUDEPATH += $$PWD
 DEPENDPATH += $$PWD
 
-RCC_DIR = .rcc
-UI_DIR = .ui
-MOC_DIR = .moc
-OBJECTS_DIR = .obj
+RCC_DIR     = $$PWD/.rcc
+UI_DIR      = $$PWD/.ui
+MOC_DIR     = $$PWD/.moc
+OBJECTS_DIR = $$PWD/.obj
 
 QT += webkit network
 
@@ -110,8 +110,9 @@ include(networkmonitor/networkmonitor.pri)
 include(cookiejar/cookiejar.pri)
 include(utils/utils.pri)
 
-RESOURCES += data/data.qrc \
-    htmls/htmls.qrc
+RESOURCES += \
+    $$PWD/data/data.qrc \
+    $$PWD/htmls/htmls.qrc
 
 DISTFILES += ../AUTHORS \
     ../ChangeLog \
@@ -120,7 +121,7 @@ DISTFILES += ../AUTHORS \
     ../README
 
 win32 {
-    RC_FILE = browser.rc
+    RC_FILE = $$PWD/browser.rc
 }
 
 mac {
@@ -128,19 +129,13 @@ mac {
     QMAKE_INFO_PLIST = Info_mac.plist
 }
 
-unix {
-    isEmpty(PREFIX) {
-        PREFIX = /usr/local
-    }
+include(../webkittrunk.pri)
 
-    BINDIR = $$PREFIX/bin
+unix {
     DATADIR = $$PREFIX/share
     PKGDATADIR = $$DATADIR/arora
-
     DEFINES += DATADIR=\\\"$$DATADIR\\\" PKGDATADIR=\\\"$$PKGDATADIR\\\"
 }
-
-include(../webkittrunk.pri)
 
 win32 {
     include(explorerstyle.pri)
