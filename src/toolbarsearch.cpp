@@ -67,6 +67,7 @@
 #include "browserapplication.h"
 #include "browsermainwindow.h"
 #include "networkaccessmanager.h"
+#include "opensearchengineaction.h"
 #include "opensearchdialog.h"
 #include "opensearchengine.h"
 #include "opensearchengineaction.h"
@@ -144,15 +145,11 @@ void ToolbarSearch::currentEngineChanged()
     }
 
     setInactiveText(openSearchManager()->currentName());
-    searchButton()->setImage(openSearchManager()->currentEngine()->image());
     m_currentEngine = openSearchManager()->currentName();
     m_suggestions.clear();
     setupList();
 }
 
-void ToolbarSearch::engineImageChanged()
-{
-    searchButton()->setImage(openSearchManager()->currentEngine()->image());
 void ToolbarSearch::completerActivated(const QModelIndex &index)
 {
     if (completerHighlighted(index))
@@ -291,9 +288,9 @@ void ToolbarSearch::showEnginesMenu()
     for (int i = 0; i < list.count(); ++i) {
         QString name = list.at(i);
         OpenSearchEngine *engine = openSearchManager()->engine(name);
-        OpenSearchEngineAction *action = new OpenSearchEngineAction(engine, &menu);
+        OpenSearchEngineAction *action = new OpenSearchEngineAction(engine, this);
         action->setData(name);
-        action->setIcon(QIcon(QPixmap::fromImage(openSearchManager()->engine(name)->image())));
+        connect(action, SIGNAL(triggered()), this, SLOT(changeCurrentEngine()));
         menu.addAction(action);
 
         if (openSearchManager()->currentName() == name) {

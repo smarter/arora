@@ -278,7 +278,7 @@ void OpenSearchEngine::suggestionsObtained()
     emit suggestions(suggestionsList);
 }
 
-QNetworkAccessManager *OpenSearchEngine::networkAccessManager()
+QNetworkAccessManager *OpenSearchEngine::networkAccessManager() const
 {
     return BrowserApplication::networkAccessManager();
 }

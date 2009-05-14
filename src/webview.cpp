@@ -169,10 +169,9 @@ void WebView::contextMenuEvent(QContextMenuEvent *event)
         for (int i = 0; i < list.count(); ++i) {
             QString name = list.at(i);
             OpenSearchEngine *engine = ToolbarSearch::openSearchManager()->engine(name);
-            QAction *action = new OpenSearchEngineAction(engine, searchMenu);
+            QAction *action = new OpenSearchEngineAction(engine, this);
             searchMenu->addAction(action);
             action->setData(name);
-            action->setIcon(QIcon(QPixmap::fromImage(ToolbarSearch::openSearchManager()->engine(name)->image())));
         }
 
         connect(searchMenu, SIGNAL(triggered(QAction *)), this, SLOT(searchRequested(QAction *)));

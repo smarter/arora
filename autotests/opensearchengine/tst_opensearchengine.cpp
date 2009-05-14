@@ -20,6 +20,7 @@
 #include <qtest.h>
 
 #include "qtest_arora.h"
+#include "qtest_arora.h"
 
 #include <qsignalspy.h>
 #include <opensearchengine.h>
@@ -118,6 +119,8 @@ void tst_OpenSearchEngine::cleanup()
 void tst_OpenSearchEngine::opensearchengine_data()
 {
 }
+    QString call_parseTemplate(QString const &searchTerm, QString templ) const
+    void call_suggestions(QStringList const &suggestions)
 
 void tst_OpenSearchEngine::opensearchengine()
 {
@@ -154,13 +157,10 @@ void tst_OpenSearchEngine::opensearchengine()
 
 void tst_OpenSearchEngine::description_data()
 {
-    QTest::addColumn<QString>("description");
     QTest::newRow("null") << QString();
     QTest::newRow("foo") << QString("foo");
 }
-
 // public QString description() const
-void tst_OpenSearchEngine::description()
 {
     QFETCH(QString, description);
 
@@ -190,7 +190,7 @@ void tst_OpenSearchEngine::image()
     image.fill();
     image.save(&imageBuffer, "PNG");
     engine.setImageUrl(QString("data:image/png;base64,").append(imageBuffer.buffer().toBase64()));
-    QCOMPARE(engine.image(), QImage());
+    engine.image();
 
     QTRY_COMPARE(spy0.count(), 1);
     QCOMPARE(spy1.count(), 0);
@@ -376,11 +376,8 @@ void tst_OpenSearchEngine::requestSuggestions_data()
 // public void requestSuggestions(QString const &searchTerm)
 void tst_OpenSearchEngine::requestSuggestions()
 {
-    QFETCH(QString, searchTerm);
     QFETCH(QStringList, suggestions);
-
     SubOpenSearchEngine engine;
-
     QSignalSpy spy0(&engine, SIGNAL(imageChanged()));
     QSignalSpy spy1(&engine, SIGNAL(suggestions(QStringList const&)));
 

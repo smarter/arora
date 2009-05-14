@@ -82,7 +82,7 @@ public slots:
 
 protected:
     static QString parseTemplate(const QString &searchTerm, const QString &searchTemplate);
-    static QNetworkAccessManager *networkAccessManager();
+    QNetworkAccessManager *networkAccessManager() const;
     void loadImage() const;
 
 private slots:

@@ -147,7 +147,6 @@ bool OpenSearchManager::addEngine(OpenSearchEngine *engine)
     if (m_engines.contains(engine->name()))
         return false;
 
-    engine->setNetworkAccessManager(BrowserApplication::networkAccessManager());
     m_engines[engine->name()] = engine;
 
     emit changed();
