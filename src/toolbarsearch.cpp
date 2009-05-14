@@ -288,7 +288,7 @@ void ToolbarSearch::showEnginesMenu()
     for (int i = 0; i < list.count(); ++i) {
         QString name = list.at(i);
         OpenSearchEngine *engine = openSearchManager()->engine(name);
-        OpenSearchEngineAction *action = new OpenSearchEngineAction(engine, this);
+        OpenSearchEngineAction *action = new OpenSearchEngineAction(engine, &menu);
         action->setData(name);
         connect(action, SIGNAL(triggered()), this, SLOT(changeCurrentEngine()));
         menu.addAction(action);
