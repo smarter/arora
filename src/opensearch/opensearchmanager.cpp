@@ -83,7 +83,7 @@ void OpenSearchManager::setCurrentEngine(OpenSearchEngine *engine)
     if (!engine)
         return;
 
-    setCurrentEngineName(m_engines.key(engine));
+    setCurrentName(m_engines.key(engine));
 }
 
 OpenSearchEngine *OpenSearchManager::engine(const QString &name)
@@ -128,6 +128,8 @@ bool OpenSearchManager::addEngine(const QString &fileName)
     OpenSearchReader reader;
     OpenSearchEngine *engine = reader.read(&file);
 
+    file.close();
+
     if (!addEngine(engine)) {
         delete engine;
         return false;
@@ -147,6 +149,7 @@ bool OpenSearchManager::addEngine(OpenSearchEngine *engine)
     if (m_engines.contains(engine->name()))
         return false;
 
+    engine->setNetworkAccessManager(BrowserApplication::networkAccessManager());
     m_engines[engine->name()] = engine;
 
     emit changed();
