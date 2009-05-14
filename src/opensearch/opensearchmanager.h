@@ -57,6 +57,10 @@ public:
 
     OpenSearchEngine *engine(const QString &name);
 
+    OpenSearchEngine *engineFromKeyword(const QString &keyword) const;
+    QString keywordFromEngine(const QString &engine) const;
+    void setKeyword(const QString &searchEngine, const QString &keyword);
+
     bool engineExists(const QString &name);
 
     void addEngine(const QUrl &url);
@@ -85,6 +89,7 @@ private:
     AutoSaver *m_autoSaver;
 
     QHash<QString, OpenSearchEngine *> m_engines;
+    QHash<QString, QString> m_engineKeyword;
     QString m_current;
 };
 

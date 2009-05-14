@@ -69,6 +69,8 @@
 #include "historymanager.h"
 #include "tabbar.h"
 #include "locationbar.h"
+#include "opensearchengine.h"
+#include "opensearchmanager.h"
 #include "toolbarsearch.h"
 #include "webactionmapper.h"
 #include "webpage.h"
@@ -928,6 +930,16 @@ QUrl TabWidget::guessUrlFromString(const QString &string)
 {
     QString urlStr = string.trimmed();
 
+    // check if a keyword is used
+    int space = urlStr.indexOf(QLatin1Char(' '));
+    if (space != -1) {
+        QString keyword = urlStr.left(space);
+        QString searchTerms = urlStr.right(urlStr.size() - space - 1);
+        QUrl url = ToolbarSearch::openSearchManager()->engineFromKeyword(keyword)->searchUrl(searchTerms);
+        if (url.isValid())
+            return url;
+    }
+
     // check if the string is just a host with a port
     QRegExp hostWithPort(QLatin1String("^[a-zA-Z\\.]+\\:[0-9]*$"));
     if (hostWithPort.exactMatch(urlStr))
@@ -975,9 +987,19 @@ QUrl TabWidget::guessUrlFromString(const QString &string)
     // Fall back to QUrl's own tolerant parser.
     QUrl url = QUrl::fromEncoded(string.toUtf8(), QUrl::TolerantMode);
 
+    // TODO: find a way to detect hostname, as Firefox does
+    /*
     // finally for cases where the user just types in a hostname add http
     if (url.scheme().isEmpty())
         url = QUrl::fromEncoded("http://" + string.toUtf8(), QUrl::TolerantMode);
+    */
+
+    // if nothing else was found at that point, assumes only search terms
+    // where entered and pass them to the default search engine
+    if (url.scheme().isEmpty()) {
+       url = ToolbarSearch::openSearchManager()->currentEngine()->searchUrl(string);
+    }
+
     return url;
 }
 

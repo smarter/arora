@@ -25,6 +25,7 @@
 #include "opensearchmanager.h"
 #include "toolbarsearch.h"
 
+#include <qinputdialog.h>
 #include <qfiledialog.h>
 #include <qmessagebox.h>
 
@@ -44,6 +45,8 @@ OpenSearchDialog::OpenSearchDialog(QWidget *parent)
             this, SLOT(addButtonClicked()));
     connect(m_deleteButton, SIGNAL(clicked()),
             this, SLOT(deleteButtonClicked()));
+    connect(m_keywordButton, SIGNAL(clicked()),
+            this, SLOT(keywordButtonClicked()));
     connect(m_restoreButton, SIGNAL(clicked()),
             this, SLOT(restoreButtonClicked()));
 }
@@ -72,6 +75,19 @@ void OpenSearchDialog::deleteButtonClicked()
     }
 
     ToolbarSearch::openSearchManager()->removeEngine(m_listView->currentIndex().data().toString());
+}
+
+void OpenSearchDialog::keywordButtonClicked()
+{
+    QString engine = m_listView->currentIndex().data().toString();
+    QString oldKeyword = ToolbarSearch::openSearchManager()->keywordFromEngine(engine);
+
+    bool ok = false;
+    QString keyword = QInputDialog::getText(this, tr("Change keyword"), tr("Change keyword for %1").arg(engine),
+                                            QLineEdit::Normal, oldKeyword, &ok);
+
+    if (ok && keyword != oldKeyword)
+        ToolbarSearch::openSearchManager()->setKeyword(engine, keyword);
 }
 
 void OpenSearchDialog::restoreButtonClicked()

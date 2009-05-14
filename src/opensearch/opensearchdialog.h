@@ -37,6 +37,7 @@ public:
 protected slots:
     void addButtonClicked();
     void deleteButtonClicked();
+    void keywordButtonClicked();
     void restoreButtonClicked();
 
 private:

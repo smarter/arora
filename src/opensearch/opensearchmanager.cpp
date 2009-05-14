@@ -38,6 +38,8 @@
 #include <qsettings.h>
 #include <qstringlist.h>
 
+#include <qdebug.h>
+
 OpenSearchManager::OpenSearchManager(QObject *parent)
     : QObject(parent)
     , m_autoSaver(new AutoSaver(this))
@@ -46,6 +48,15 @@ OpenSearchManager::OpenSearchManager(QObject *parent)
             m_autoSaver, SLOT(changeOccurred()));
 
     load();
+
+    QSettings settings;
+    settings.beginGroup(QLatin1String("openSearch/keywords"));
+    QStringList engineList = settings.allKeys();
+    for (int i = 0; i < engineList.size(); ++i) {
+       QString searchEngine = engineList.at(i);
+       QString keyword = settings.value(searchEngine).toString();
+       m_engineKeyword.insert(searchEngine, keyword);
+    }
 }
 
 OpenSearchManager::~OpenSearchManager()
@@ -92,6 +103,26 @@ OpenSearchEngine *OpenSearchManager::engine(const QString &name)
         return 0;
 
     return m_engines[name];
+}
+
+OpenSearchEngine *OpenSearchManager::engineFromKeyword(const QString &keyword) const
+{
+    return m_engines[m_engineKeyword.key(keyword)];
+}
+
+QString OpenSearchManager::keywordFromEngine(const QString &searchEngine) const
+{
+    return m_engineKeyword[searchEngine];
+}
+
+void OpenSearchManager::setKeyword(const QString &searchEngine, const QString &keyword)
+{
+    //TODO: check for dup
+
+    QSettings settings;
+    settings.beginGroup(QLatin1String("openSearch/keywords"));
+    settings.setValue(searchEngine, keyword);
+    m_engineKeyword.insert(searchEngine, keyword);
 }
 
 bool OpenSearchManager::engineExists(const QString &name)
