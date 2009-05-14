@@ -102,7 +102,7 @@ ToolbarSearch::ToolbarSearch(QWidget *parent)
     , m_suggestTimer(0)
     , m_completer(0)
 {
-    connect(openSearchManager(), SIGNAL(currentEngineChanged()),
+    connect(openSearchManager(), SIGNAL(currentChanged()),
             this, SLOT(currentEngineChanged()));
 
     m_completer = new QCompleter(this);
@@ -143,12 +143,16 @@ void ToolbarSearch::currentEngineChanged()
                 this, SLOT(newSuggestions(const QStringList &)));
     }
 
-    setInactiveText(openSearchManager()->currentEngineName());
-    m_currentEngine = openSearchManager()->currentEngineName();
+    setInactiveText(openSearchManager()->currentName());
+    searchButton()->setImage(openSearchManager()->currentEngine()->image());
+    m_currentEngine = openSearchManager()->currentName();
     m_suggestions.clear();
     setupList();
 }
 
+void ToolbarSearch::engineImageChanged()
+{
+    searchButton()->setImage(openSearchManager()->currentEngine()->image());
 void ToolbarSearch::completerActivated(const QModelIndex &index)
 {
     if (completerHighlighted(index))
@@ -289,10 +293,10 @@ void ToolbarSearch::showEnginesMenu()
         OpenSearchEngine *engine = openSearchManager()->engine(name);
         OpenSearchEngineAction *action = new OpenSearchEngineAction(engine, &menu);
         action->setData(name);
-        connect(action, SIGNAL(triggered()), this, SLOT(changeCurrentEngine()));
+        action->setIcon(QIcon(QPixmap::fromImage(openSearchManager()->engine(name)->image())));
         menu.addAction(action);
 
-        if (openSearchManager()->currentEngineName() == name) {
+        if (openSearchManager()->currentName() == name) {
             action->setCheckable(true);
             action->setChecked(true);
         }
@@ -342,7 +346,7 @@ void ToolbarSearch::changeCurrentEngine()
 {
     if (QAction *action = qobject_cast<QAction*>(sender())) {
         QString name = action->data().toString();
-        openSearchManager()->setCurrentEngineName(name);
+        openSearchManager()->setCurrentName(name);
     }
 }
 

@@ -67,6 +67,7 @@
 
 class AutoSaver;
 class OpenSearchManager;
+class OpenSearchManager;
 class QCompleter;
 class QModelIndex;
 class QStandardItem;

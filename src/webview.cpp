@@ -172,6 +172,7 @@ void WebView::contextMenuEvent(QContextMenuEvent *event)
             QAction *action = new OpenSearchEngineAction(engine, searchMenu);
             searchMenu->addAction(action);
             action->setData(name);
+            action->setIcon(QIcon(QPixmap::fromImage(ToolbarSearch::openSearchManager()->engine(name)->image())));
         }
 
         connect(searchMenu, SIGNAL(triggered(QAction *)), this, SLOT(searchRequested(QAction *)));

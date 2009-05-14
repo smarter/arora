@@ -35,7 +35,7 @@ OpenSearchDialog::OpenSearchDialog(QWidget *parent)
     setModal(true);
     setupUi(this);
 
-    m_model = new OpenSearchEngineModel(ToolbarSearch::openSearchManager(), this);
+    m_model = new OpenSearchEngineModel(ToolbarSearch::openSearchManager());
     m_listView->setModel(m_model);
 
     connect(m_closeButton, SIGNAL(clicked()),
@@ -71,7 +71,7 @@ void OpenSearchDialog::deleteButtonClicked()
         return;
     }
 
-    m_listView->removeSelected();
+    ToolbarSearch::openSearchManager()->removeEngine(m_listView->currentIndex().data().toString());
 }
 
 void OpenSearchDialog::restoreButtonClicked()
