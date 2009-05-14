@@ -128,8 +128,6 @@ bool OpenSearchManager::addEngine(const QString &fileName)
     OpenSearchReader reader;
     OpenSearchEngine *engine = reader.read(&file);
 
-    file.close();
-
     if (!addEngine(engine)) {
         delete engine;
         return false;
