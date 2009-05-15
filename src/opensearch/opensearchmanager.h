@@ -21,6 +21,8 @@
 #ifndef OPENSEARCHMANAGER_H
 #define OPENSEARCHMANAGER_H
 
+#include "cachedsettings.h"
+
 #include <qobject.h>
 
 #include <qhash.h>
@@ -87,9 +89,9 @@ protected slots:
 
 private:
     AutoSaver *m_autoSaver;
+    CachedSettings *m_settings;
 
     QHash<QString, OpenSearchEngine *> m_engines;
-    QHash<QString, QString> m_engineKeyword;
     QString m_current;
 };
 

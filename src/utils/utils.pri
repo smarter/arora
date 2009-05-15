@@ -3,6 +3,7 @@ DEPENDPATH += $$PWD
 
 HEADERS += \
     autosaver.h \
+    cachedsettings.h \
     editlistview.h \
     edittableview.h \
     edittreeview.h \
@@ -14,6 +15,7 @@ HEADERS += \
 
 SOURCES += \
     autosaver.cpp \
+    cachedsettings.cpp \
     editlistview.cpp \
     edittableview.cpp \
     edittreeview.cpp \
